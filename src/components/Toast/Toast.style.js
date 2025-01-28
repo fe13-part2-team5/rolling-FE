@@ -1,8 +1,33 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Completed from "../../assets/icons/completed.svg";
 import Close from "../../assets/icons/close.svg";
 
+const slideUp = keyframes`
+  from {
+    transform: translate(0, 64px);
+    opacity: 0; 
+  }
+
+  to {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+`;
+
+const fadeOut = keyframes`
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  to {
+    opacity: 0;
+    transform: scale(.9);
+  }
+`;
+
 export const Container = styled.div`
+  animation: ${slideUp} 0.2s ease-in-out;
   width: 524px;
   height: 64px;
   background-color: #000000cc;
@@ -13,6 +38,7 @@ export const Container = styled.div`
   align-items: center;
 
   padding: 0 30px;
+  margin-bottom: 8px;
 `;
 
 export const Content = styled.div`
@@ -31,6 +57,14 @@ export const Message = styled.div`
 
 export const Button = styled(Close)`
   cursor: pointer;
+`;
+
+export const ToastsContainer = styled.div`
+  z-index: 9999;
+  position: fixed;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 export { Completed };

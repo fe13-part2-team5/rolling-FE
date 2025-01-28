@@ -10,7 +10,7 @@ import { useToast } from "../../context/ToastContext";
 
 function Toast({ onClose, message, isVisible }) {
   return (
-    <ToastContainer isVisible={isVisible}>
+    <ToastContainer $isVisible={isVisible}>
       <Content>
         <Completed />
         <Message>{message}</Message>

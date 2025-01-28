@@ -26,7 +26,7 @@ const fadeOut = keyframes`
 `;
 
 export const ToastContainer = styled.div`
-  animation: ${({ isVisible }) => (isVisible ? slideUp : fadeOut)} 0.3s
+  animation: ${({ $isVisible }) => ($isVisible ? slideUp : fadeOut)} 0.3s
     ease-in-out;
 
   width: 524px;

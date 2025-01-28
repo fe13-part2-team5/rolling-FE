@@ -12,7 +12,11 @@ const ToastProvider = ({ children }) => {
     const id = Date.now();
     const newToast = { id, message, isVisible: true };
 
-    setToasts((prevToasts) => [...prevToasts, newToast]);
+    setToasts((prevToasts) =>
+      prevToasts.length <= 2
+        ? [...prevToasts, newToast]
+        : [...prevToasts.slice(1), newToast]
+    );
 
     setTimeout(() => removeToast(id), duration);
   };

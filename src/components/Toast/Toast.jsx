@@ -1,15 +1,36 @@
-import { Container, Content, Message, Completed, Button } from "./Toast.style";
+import {
+  ToastContainer,
+  Content,
+  Message,
+  Completed,
+  Button,
+  ToasterContainer,
+} from "./Toast.style";
 
-function Toast({ onClose }) {
+function Toast({ onClose, message }) {
   return (
-    <Container>
+    <ToastContainer>
       <Content>
         <Completed />
-        <Message>URL이 복사되었습니다.</Message>
+        <Message>{message}</Message>
       </Content>
       <Button onClick={onClose} />
-    </Container>
+    </ToastContainer>
   );
 }
 
-export default Toast;
+function Toaster({ toasts, removeToast }) {
+  return (
+    <ToasterContainer>
+      {toasts.map((toast) => (
+        <Toast
+          key={toast.id}
+          onClose={() => removeToast(toast.id)}
+          message={toast.message}
+        />
+      ))}
+    </ToasterContainer>
+  );
+}
+
+export default Toaster;

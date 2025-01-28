@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 
 import { createPortal } from "react-dom";
 import Toaster from "../components/Toast/Toast";
@@ -42,16 +42,5 @@ const ToastProvider = ({ children }) => {
   );
 };
 
-export const useToast = () => {
-  const context = useContext(ToastContext);
-
-  if (!context) {
-    throw new Error(
-      "ToastContext를 참조할 수 없습니다. useToast를 ToastProvider의 하위 컴포넌트에서 사용하고 있는지 확인하세요."
-    );
-  }
-
-  return context;
-};
-
 export default ToastProvider;
+export { ToastContext };

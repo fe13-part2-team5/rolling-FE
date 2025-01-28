@@ -6,7 +6,8 @@ import {
   Button,
   ToasterContainer,
 } from "./Toast.style";
-import { useToast } from "../../context/ToastContext";
+import { ToastContext } from "../../context/ToastContext";
+import { useContext } from "react";
 
 function Toast({ onClose, message, isVisible }) {
   return (
@@ -21,7 +22,8 @@ function Toast({ onClose, message, isVisible }) {
 }
 
 function Toaster() {
-  const { toasts, removeToast } = useToast();
+  const { toasts, removeToast } = useContext(ToastContext);
+
   return (
     <ToasterContainer>
       {toasts.map((toast) => (

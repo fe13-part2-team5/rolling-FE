@@ -6,6 +6,7 @@ import {
   Button,
   ToasterContainer,
 } from "./Toast.style";
+import { useToast } from "../../context/ToastContext";
 
 function Toast({ onClose, message }) {
   return (
@@ -19,7 +20,8 @@ function Toast({ onClose, message }) {
   );
 }
 
-function Toaster({ toasts, removeToast }) {
+function Toaster() {
+  const { toasts, removeToast } = useToast();
   return (
     <ToasterContainer>
       {toasts.map((toast) => (

@@ -17,17 +17,18 @@ const slideUp = keyframes`
 const fadeOut = keyframes`
   from {
     opacity: 1;
-    transform: scale(1);
   }
   
   to {
     opacity: 0;
-    transform: scale(.9);
+    transform: scale(.1);
   }
 `;
 
 export const ToastContainer = styled.div`
-  animation: ${slideUp} 0.2s ease-in-out;
+  animation: ${({ isVisible }) => (isVisible ? slideUp : fadeOut)} 0.3s
+    ease-in-out;
+
   width: 524px;
   height: 64px;
   background-color: #000000cc;

@@ -8,9 +8,9 @@ import {
 } from "./Toast.style";
 import { useToast } from "../../context/ToastContext";
 
-function Toast({ onClose, message }) {
+function Toast({ onClose, message, isVisible }) {
   return (
-    <ToastContainer>
+    <ToastContainer isVisible={isVisible}>
       <Content>
         <Completed />
         <Message>{message}</Message>
@@ -29,6 +29,7 @@ function Toaster() {
           key={toast.id}
           onClose={() => removeToast(toast.id)}
           message={toast.message}
+          isVisible={toast.isVisible}
         />
       ))}
     </ToasterContainer>

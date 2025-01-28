@@ -26,7 +26,7 @@ const fadeOut = keyframes`
   }
 `;
 
-export const Container = styled.div`
+export const ToastContainer = styled.div`
   animation: ${slideUp} 0.2s ease-in-out;
   width: 524px;
   height: 64px;
@@ -59,7 +59,7 @@ export const Button = styled(Close)`
   cursor: pointer;
 `;
 
-export const ToastsContainer = styled.div`
+export const ToasterContainer = styled.div`
   z-index: 9999;
   position: fixed;
   top: 90%;

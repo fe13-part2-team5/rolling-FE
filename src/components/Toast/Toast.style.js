@@ -39,7 +39,6 @@ export const ToastContainer = styled.div`
   align-items: center;
 
   padding: 0 30px;
-  margin-bottom: 8px;
 `;
 
 export const Content = styled.div`
@@ -63,9 +62,15 @@ export const Button = styled(Close)`
 export const ToasterContainer = styled.div`
   z-index: 9999;
   position: fixed;
-  top: 90%;
+  bottom: 4%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
+
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 `;
 
 export { Completed };

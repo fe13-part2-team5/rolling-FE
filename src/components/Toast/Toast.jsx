@@ -2,21 +2,24 @@ import {
   ToastContainer,
   Content,
   Message,
-  Completed,
   Button,
   ToasterContainer,
 } from "./Toast.style";
 import { ToastContext } from "../../context/ToastContext";
+import { CompletedIcon, CloseIcon } from "../Icons";
+import { theme } from "../../styles/theme";
 import { useContext } from "react";
 
 function Toast({ onClose, message, isVisible }) {
   return (
     <ToastContainer $isVisible={isVisible}>
       <Content>
-        <Completed />
+        <CompletedIcon color={theme.colors.green[500]} />
         <Message>{message}</Message>
       </Content>
-      <Button onClick={onClose} />
+      <Button onClick={onClose}>
+        <CloseIcon color={theme.colors.gray[300]} />
+      </Button>
     </ToastContainer>
   );
 }

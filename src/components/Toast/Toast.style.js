@@ -1,6 +1,4 @@
 import styled, { keyframes } from "styled-components";
-import Completed from "../../assets/icons/completed.svg";
-import Close from "../../assets/icons/close.svg";
 
 const slideUp = keyframes`
   from {
@@ -25,7 +23,7 @@ const fadeOut = keyframes`
   }
 `;
 
-export const ToastContainer = styled.div`
+const ToastContainer = styled.div`
   animation: ${({ $isVisible }) => ($isVisible ? slideUp : fadeOut)} 0.3s
     ease-in-out;
 
@@ -41,25 +39,26 @@ export const ToastContainer = styled.div`
   padding: 0 30px;
 `;
 
-export const Content = styled.div`
+const Content = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 12px;
 `;
 
-export const Message = styled.div`
+const Message = styled.div`
   ${({ theme }) => theme.fonts["16r"]};
   color: ${({ theme }) => theme.colors.white};
 
   user-select: none;
 `;
 
-export const Button = styled(Close)`
+const Button = styled.button`
+  background-color: transparent;
   cursor: pointer;
 `;
 
-export const ToasterContainer = styled.div`
+const ToasterContainer = styled.div`
   z-index: 9999;
   position: fixed;
   bottom: 4%;
@@ -73,4 +72,4 @@ export const ToasterContainer = styled.div`
   gap: 8px;
 `;
 
-export { Completed };
+export { ToastContainer, Content, Message, Button, ToasterContainer };

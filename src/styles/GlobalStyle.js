@@ -8,9 +8,11 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  /* 2. Remove default margin */
+  /* 2. Remove default margin, padding, border */
   * {
     margin: 0;
+    padding: 0;
+    border: 0;
   }
 
   body {

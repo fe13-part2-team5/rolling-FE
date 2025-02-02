@@ -1,32 +1,40 @@
 import { useState } from "react";
-import { ErrorMessage, Options, Option } from "./TextField.style";
+import { SelectBox, Label, Options, Option } from "./TextField.style";
+
+const optionData = [
+  { key: 1, value: "1번" },
+  { key: 2, value: "2번" },
+  { key: 3, value: "3번" },
+  { key: 4, value: "4번" },
+];
 
 function Dropdown() {
-  const [error, setError] = useState(false);
-  const [value, setValue] = useState("placeholder");
+  const [isShowOptions, setIsShowOptions] = useState(false);
+  const [currentValue, setCurrentValue] = useState(optionData[0].value);
 
-  const handleChange = (e) => {
-    setValue(e.target.value);
-    setError(e.target.value === "");
+  const handleChangeSelect = (e) => {
+    setCurrentValue(e.target.getAttribute("value"));
   };
 
   return (
     <>
-      {/* default width: 100% */}
-      <Options
+      <SelectBox
         width="300px"
-        value={value}
-        onChange={handleChange}
-        error={error}
+        onClick={() => setIsShowOptions((prev) => !prev)}
       >
-        <Option value="placeholder" disabled hidden>
-          Placeholder
-        </Option>
-        <Option>1번</Option>
-        <Option>2번</Option>
-        <Option>3번</Option>
-      </Options>
-      {error && <ErrorMessage>값을 입력해 주세요.</ErrorMessage>}
+        <Label show={isShowOptions}>{currentValue}</Label>
+        <Options show={isShowOptions}>
+          {optionData.map((data) => (
+            <Option
+              key={data.key}
+              value={data.value}
+              onClick={handleChangeSelect}
+            >
+              {data.value}
+            </Option>
+          ))}
+        </Options>
+      </SelectBox>
     </>
   );
 }

@@ -1,13 +1,13 @@
 import { ThemeProvider } from "styled-components";
 import { theme } from "./styles/theme";
 import GlobalStyle from "./styles/GlobalStyle";
-import InputTextField from "./components/InputTextField";
+import InputField from "./components/InputField";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <InputTextField />
+      <InputField />
     </ThemeProvider>
   );
 }

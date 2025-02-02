@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ErrorMessage, Input } from "./TextField.style";
 
-function InputTextField() {
+function InputField() {
   const [error, setError] = useState(false);
   const [value, setValue] = useState("");
 
@@ -25,4 +25,4 @@ function InputTextField() {
   );
 }
 
-export default InputTextField;
+export default InputField;

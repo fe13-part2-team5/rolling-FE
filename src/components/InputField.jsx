@@ -10,6 +10,10 @@ function InputField() {
     setError(e.target.value === "");
   };
 
+  const handleBlur = () => {
+    setError(value === "");
+  };
+
   return (
     <>
       {/* default width: 100% */}
@@ -18,6 +22,7 @@ function InputField() {
         placeholder="Placeholder"
         value={value}
         onChange={handleChange}
+        onBlur={handleBlur}
         error={error}
       />
       {error && <ErrorMessage>값을 입력해 주세요.</ErrorMessage>}

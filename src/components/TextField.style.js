@@ -52,6 +52,7 @@ const textfieldStateStyles = css`
 `;
 
 const ErrorMessage = styled.span`
+  display: block;
   color: ${({ theme }) => theme.colors.error};
   font-size: ${({ theme }) => theme.fonts["12r"]};
 `;

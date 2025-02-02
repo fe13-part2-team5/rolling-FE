@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
+Input.defaultProps = {
+  width: "100%",
+};
+
 const Input = styled.input`
-  width: ${({ width }) => (width ? width : "100%")};
+  width: ${({ width }) => width};
   height: 50px;
   margin: 0;
   padding: 12px 0 12px 16px;
@@ -42,7 +46,7 @@ const Input = styled.input`
 
   /* Error */
   ${(props) =>
-    props.error &&
+    props.onError &&
     `
       border-color: ${props.theme.colors.error};
       &::placeholder {

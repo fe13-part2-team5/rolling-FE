@@ -12,14 +12,14 @@ function InputField() {
 
   return (
     <>
-      {/* Input default width: 100% */}
+      {/* default width: 100% */}
       <Input
         width="300px"
         placeholder="Placeholder"
         value={value}
         onChange={handleChange}
         error={error}
-      />{" "}
+      />
       {error && <ErrorMessage>값을 입력해 주세요.</ErrorMessage>}
     </>
   );

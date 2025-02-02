@@ -1,10 +1,7 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-Input.defaultProps = {
-  width: "100%",
-};
-
-const Input = styled.input`
+// Common TextField Styles
+const commonTextfieldStyle = css`
   width: ${({ width }) => width};
   height: 50px;
   margin: 0;
@@ -16,7 +13,6 @@ const Input = styled.input`
     color: ${({ theme }) => theme.colors.gray[500]};
   }
 
-  /* Focus */
   &:focus {
     outline: none;
     border: 2px solid ${({ theme }) => theme.colors.gray[500]};
@@ -25,17 +21,14 @@ const Input = styled.input`
     }
   }
 
-  /* Hover */
   &:hover {
     border-color: ${({ theme }) => theme.colors.gray[500]};
   }
 
-  /* Active */
   &:active {
     border: 2px solid ${({ theme }) => theme.colors.gray[900]};
   }
 
-  /* Disabled */
   &:disabled {
     background-color: ${({ theme }) => theme.colors.gray[100]};
     border-color: ${({ theme }) => theme.colors.gray[300]};
@@ -54,10 +47,28 @@ const Input = styled.input`
       }
   `}
 `;
-
 const ErrorMessage = styled.span`
   color: ${({ theme }) => theme.colors.error};
   font-size: ${({ theme }) => theme.fonts["12r"]};
 `;
 
-export { Input, ErrorMessage };
+commonTextfieldStyle.defaultProps = {
+  width: "100%",
+};
+
+// InputField
+const Input = styled.input`
+  ${commonTextfieldStyle}
+`;
+
+// Dropdown
+const Options = styled.select`
+  ${commonTextfieldStyle}
+  &:active {
+    border-color: ${({ theme }) => theme.colors.gray[500]};
+  }
+`;
+
+const Option = styled.option``;
+
+export { Input, ErrorMessage, Options, Option };

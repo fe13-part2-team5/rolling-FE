@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SelectBox, Label, Options, Option } from "./TextField.style";
 
+// 데이터 예시
 const optionData = [
   { key: 1, value: "1번" },
   { key: 2, value: "2번" },
@@ -9,18 +10,35 @@ const optionData = [
 ];
 
 function Dropdown() {
+  const selectRef = useRef(null);
   const [isShowOptions, setIsShowOptions] = useState(false);
   const [currentValue, setCurrentValue] = useState(optionData[0].value);
 
-  const handleChangeSelect = (e) => {
+  const handleChangeSelectValue = (e) => {
     setCurrentValue(e.target.getAttribute("value"));
   };
 
+  useEffect(() => {
+    // DOM(Dropdown) 외부 클릭 시, 목록 닫힘
+    function handleClickOutside(event) {
+      if (selectRef.current && !selectRef.current.contains(event.target)) {
+        setIsShowOptions(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [selectRef]);
+
   return (
     <>
+      {/* default width: 100% */}
       <SelectBox
         width="300px"
         onClick={() => setIsShowOptions((prev) => !prev)}
+        ref={selectRef}
       >
         <Label show={isShowOptions}>{currentValue}</Label>
         <Options show={isShowOptions}>
@@ -28,7 +46,7 @@ function Dropdown() {
             <Option
               key={data.key}
               value={data.value}
-              onClick={handleChangeSelect}
+              onClick={handleChangeSelectValue}
             >
               {data.value}
             </Option>

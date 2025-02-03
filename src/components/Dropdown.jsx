@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { SelectBox, Label, Options, Option } from "./TextField.style";
+import * as T from "./TextField.style";
 
 // 데이터 예시
 const optionData = [
@@ -35,24 +35,24 @@ function Dropdown({ width = "100%" }) {
   return (
     <>
       {/* default width: 100% */}
-      <SelectBox
+      <T.SelectBox
         width={width}
         onClick={() => setIsShowOptions((prev) => !prev)}
         ref={selectRef}
       >
-        <Label $show={isShowOptions}>{currentValue}</Label>
-        <Options $show={isShowOptions}>
+        <T.Label $show={isShowOptions}>{currentValue}</T.Label>
+        <T.Options $show={isShowOptions}>
           {optionData.map((data) => (
-            <Option
+            <T.Option
               key={data.key}
               value={data.value}
               onClick={handleChangeSelectValue}
             >
               {data.value}
-            </Option>
+            </T.Option>
           ))}
-        </Options>
-      </SelectBox>
+        </T.Options>
+      </T.SelectBox>
     </>
   );
 }

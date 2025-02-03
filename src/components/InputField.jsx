@@ -23,7 +23,7 @@ function InputField({ width = "100%" }) {
         value={value}
         onChange={handleChange}
         onBlur={handleBlur}
-        error={error}
+        onError={error}
       />
       {error && <ErrorMessage>값을 입력해 주세요.</ErrorMessage>}
     </>

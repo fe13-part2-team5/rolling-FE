@@ -54,7 +54,9 @@ const textfieldStateStyles = css`
 const ErrorMessage = styled.span`
   display: block;
   color: ${({ theme }) => theme.colors.error};
-  font-size: ${({ theme }) => theme.fonts["12r"]};
+  font-size: ${({ theme }) => theme.fonts["12r"].fontSize};
+  font-weight: ${({ theme }) => theme.fonts["12r"].fontWeight};
+  line-height: ${({ theme }) => theme.fonts["12r"].lineHeight};
 `;
 
 // InputField
@@ -70,11 +72,7 @@ const SelectBox = styled.div`
   position: relative;
   border: none;
   align-self: center;
-  cursor: pointer; // 여전히 필요할 경우 유지, 아니면 삭제 가능
-
-  &:active {
-    border-color: ${({ theme }) => theme.colors.gray[500]};
-  }
+  cursor: pointer;
 
   &::before {
     content: "⌵";
@@ -100,6 +98,9 @@ const Label = styled.label`
     props.show
       ? `2px solid ${props.theme.colors.gray[500]}`
       : `1px solid ${props.theme.colors.gray[300]}`};
+  &:active {
+    border-color: ${({ theme }) => theme.colors.gray[500]};
+  }
 `;
 
 const Options = styled.ul`

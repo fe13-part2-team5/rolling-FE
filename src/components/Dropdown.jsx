@@ -9,7 +9,7 @@ const optionData = [
   { key: 4, value: "4번" },
 ];
 
-function Dropdown() {
+function Dropdown({ width = "100%" }) {
   const selectRef = useRef(null);
   const [isShowOptions, setIsShowOptions] = useState(false);
   const [currentValue, setCurrentValue] = useState(optionData[0].value);
@@ -36,7 +36,7 @@ function Dropdown() {
     <>
       {/* default width: 100% */}
       <SelectBox
-        width="300px"
+        width={width}
         onClick={() => setIsShowOptions((prev) => !prev)}
         ref={selectRef}
       >

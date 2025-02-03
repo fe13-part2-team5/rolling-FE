@@ -8,10 +8,10 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <InputField />
+      <InputField width={"300px"} />
       <br />
       <br />
-      <Dropdown />
+      <Dropdown width={"300px"} />
     </ThemeProvider>
   );
 }

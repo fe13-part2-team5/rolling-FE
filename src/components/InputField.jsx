@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ErrorMessage, Input } from "./TextField.style";
 
-function InputField() {
+function InputField({ width = "100%" }) {
   const [error, setError] = useState(true);
   const [value, setValue] = useState("");
 
@@ -18,7 +18,7 @@ function InputField() {
     <>
       {/* default width: 100% */}
       <Input
-        width="300px"
+        width={width}
         placeholder="Placeholder"
         value={value}
         onChange={handleChange}

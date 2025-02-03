@@ -2,14 +2,13 @@ import styled, { css } from "styled-components";
 
 // Common TextField Styles
 const commonTextfieldStyles = css`
-  width: ${({ width = "100%" }) => width};
+  width: ${({ width }) => width};
   height: 50px;
   margin: 0;
   padding: 12px 0 12px 16px;
   background-color: ${({ theme }) => theme.colors.white};
   border: 1px solid ${({ theme }) => theme.colors.gray[300]};
   border-radius: 8px;
-  box-sizing: border-box;
 
   &::placeholder {
     color: ${({ theme }) => theme.colors.gray[500]};
@@ -68,12 +67,12 @@ const Input = styled.input`
 // Dropdown
 const SelectBox = styled.div`
   ${commonTextfieldStyles}
-  padding: 0;
   position: relative;
+  padding: 0;
   border: none;
-  align-self: center;
   cursor: pointer;
 
+  /* 임시 아이콘 */
   &::before {
     content: "⌵";
     position: absolute;
@@ -88,7 +87,6 @@ const Label = styled.label`
   ${commonTextfieldStyles}
   ${textfieldStateStyles}
   display: block;
-  height: 100%;
   cursor: pointer;
   border: ${(props) =>
     props.show
@@ -98,13 +96,13 @@ const Label = styled.label`
     props.show
       ? `2px solid ${props.theme.colors.gray[500]}`
       : `1px solid ${props.theme.colors.gray[300]}`};
+
   &:active {
     border-color: ${({ theme }) => theme.colors.gray[500]};
   }
 `;
 
 const Options = styled.ul`
-  width: 100%;
   max-height: ${(props) => (props.show ? "none" : "0")};
   margin-top: 8px;
   padding: 0;
@@ -125,6 +123,7 @@ const Option = styled.li`
     margin-bottom: 10px;
   }
   transition: background-color 0.1s ease-in;
+
   &:hover {
     background-color: ${({ theme }) => theme.colors.gray[100]};
   }

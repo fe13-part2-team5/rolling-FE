@@ -40,8 +40,8 @@ function Dropdown({ width = "100%" }) {
         onClick={() => setIsShowOptions((prev) => !prev)}
         ref={selectRef}
       >
-        <Label show={isShowOptions}>{currentValue}</Label>
-        <Options show={isShowOptions}>
+        <Label $show={isShowOptions}>{currentValue}</Label>
+        <Options $show={isShowOptions}>
           {optionData.map((data) => (
             <Option
               key={data.key}

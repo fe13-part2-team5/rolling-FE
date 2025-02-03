@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ErrorMessage, Input } from "./TextField.style";
 
 function InputField({ width = "100%" }) {
-  const [error, setError] = useState(true);
+  const [error, setError] = useState(false);
   const [value, setValue] = useState("");
 
   const handleChange = (e) => {
@@ -23,7 +23,7 @@ function InputField({ width = "100%" }) {
         value={value}
         onChange={handleChange}
         onBlur={handleBlur}
-        onError={error}
+        $error={error}
       />
       {error && <ErrorMessage>값을 입력해 주세요.</ErrorMessage>}
     </>

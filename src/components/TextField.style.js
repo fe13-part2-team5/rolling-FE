@@ -15,7 +15,7 @@ const commonTextfieldStyles = css`
   }
 
   ${(props) =>
-    props.onError &&
+    props.$error &&
     css`
       border-color: ${props.theme.colors.error};
       &::placeholder {
@@ -89,11 +89,11 @@ const Label = styled.label`
   display: block;
   cursor: pointer;
   border: ${(props) =>
-    props.show
+    props.$show
       ? `2px solid ${props.theme.colors.gray[500]}`
       : `1px solid ${props.theme.colors.gray[300]}`};
   border: ${(props) =>
-    props.show
+    props.$show
       ? `2px solid ${props.theme.colors.gray[500]}`
       : `1px solid ${props.theme.colors.gray[300]}`};
 
@@ -103,11 +103,11 @@ const Label = styled.label`
 `;
 
 const Options = styled.ul`
-  max-height: ${(props) => (props.show ? "none" : "0")};
+  max-height: ${(props) => (props.$show ? "none" : "0")};
   margin-top: 8px;
   padding: 0;
   border: ${(props) =>
-    props.show ? `1px solid ${props.theme.colors.gray[300]}` : "none"};
+    props.$show ? `1px solid ${props.theme.colors.gray[300]}` : "none"};
   border-radius: 8px;
   box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
   overflow: hidden;

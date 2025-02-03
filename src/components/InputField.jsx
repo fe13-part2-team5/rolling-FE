@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ErrorMessage, Input } from "./TextField.style";
+import * as T from "./TextField.style";
 
 function InputField({ width = "100%" }) {
   const [error, setError] = useState(false);
@@ -17,7 +17,7 @@ function InputField({ width = "100%" }) {
   return (
     <>
       {/* default width: 100% */}
-      <Input
+      <T.Input
         width={width}
         placeholder="Placeholder"
         value={value}
@@ -25,7 +25,7 @@ function InputField({ width = "100%" }) {
         onBlur={handleBlur}
         $error={error}
       />
-      {error && <ErrorMessage>값을 입력해 주세요.</ErrorMessage>}
+      {error && <T.ErrorMessage>값을 입력해 주세요.</T.ErrorMessage>}
     </>
   );
 }

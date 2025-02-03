@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ErrorMessage, Input } from "./TextField.style";
 
 function InputField() {
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(true);
   const [value, setValue] = useState("");
 
   const handleChange = (e) => {

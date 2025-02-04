@@ -1,8 +1,8 @@
-import ReactQuill from "react-quill";
+import StyledQuill from "./TextEditor.style";
 
 function TextEditor({ content, setContent }) {
   return (
-    <ReactQuill
+    <StyledQuill
       value={content}
       onChange={setContent}
       modules={{

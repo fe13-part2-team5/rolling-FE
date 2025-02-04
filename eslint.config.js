@@ -5,8 +5,6 @@ import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import eslintConfigPrettier from "eslint-config-prettier";
 
-// prettier eslint-config-prettier
-
 export default [
   { ignores: ["dist"] },
   {

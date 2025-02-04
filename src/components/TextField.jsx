@@ -19,7 +19,6 @@ function Dropdown({ width = "100%" }) {
   };
 
   useEffect(() => {
-    // DOM(Dropdown) 외부 클릭 시, 목록 닫힘
     function handleClickOutside(event) {
       if (selectRef.current && !selectRef.current.contains(event.target)) {
         setIsShowOptions(false);
@@ -34,7 +33,6 @@ function Dropdown({ width = "100%" }) {
 
   return (
     <>
-      {/* default width: 100% */}
       <T.SelectBox
         width={width}
         onClick={() => setIsShowOptions((prev) => !prev)}
@@ -57,4 +55,32 @@ function Dropdown({ width = "100%" }) {
   );
 }
 
-export default Dropdown;
+function InputField({ width = "100%" }) {
+  const [error, setError] = useState(false);
+  const [value, setValue] = useState("");
+
+  const handleChange = (e) => {
+    setValue(e.target.value);
+    setError(e.target.value === "");
+  };
+
+  const handleBlur = () => {
+    setError(value === "");
+  };
+
+  return (
+    <>
+      <T.Input
+        width={width}
+        placeholder="Placeholder"
+        value={value}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        $error={error}
+      />
+      {error && <T.ErrorMessage>값을 입력해 주세요.</T.ErrorMessage>}
+    </>
+  );
+}
+
+export { Dropdown, InputField };

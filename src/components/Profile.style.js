@@ -16,6 +16,7 @@ export const ProfileBox = styled.div`
   width: 197px;
   height: 65px;
   background-color: ${({ theme }) => theme.colors.gray[300]};
+  gap: 47px;
 `;
 
 export const Icon = styled.div`

@@ -1,6 +1,8 @@
 import Header from "../components/Header/Header";
 import HeaderService from "../components/HeaderService/HeaderService";
 import CardList from "../components/CardList";
+import axios from "axios";
+import { useNavigate, useParams } from "react-router-dom";
 
 const mockData = [
   {
@@ -50,11 +52,27 @@ const mockData = [
 ];
 
 function Edit() {
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const handleDeleteRecipient = () => {
+    axios
+      .delete(`https://rolling-api.vercel.app/13-5/recipient/${id}`)
+      .then((response) => {
+        console.log(response);
+      })
+      .finally(() => {
+        navigate(`/list`);
+      });
+  };
+
   return (
     <>
       <Header />
       <HeaderService />
-      <CardList cards={mockData} />
+      <div>
+        <button onClick={handleDeleteRecipient}>삭제하기</button>
+        <CardList cards={mockData} />
+      </div>
     </>
   );
 }

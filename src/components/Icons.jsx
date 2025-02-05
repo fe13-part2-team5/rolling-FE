@@ -10,6 +10,7 @@ import Edit from "../assets/icons/edit.svg";
 import Person from "../assets/icons/person.svg";
 import Plus from "../assets/icons/plus.svg";
 import Share from "../assets/icons/share.svg";
+import Logo from "../assets/icons/logo.svg";
 import { theme } from "../styles/theme";
 
 const AddIcon = ({ size = 24, color = theme.colors.black }) => {
@@ -60,6 +61,10 @@ const ShareIcon = ({ size = 24, color = theme.colors.black }) => {
   return <Share width={size} heigth={size} color={color} />;
 };
 
+const LogoIcon = ({ size = 24 }) => {
+  return <Logo width={size} heigth={size} />;
+};
+
 export {
   AddIcon,
   ArrowDownIcon,
@@ -73,4 +78,5 @@ export {
   PersonIcon,
   PlusIcon,
   ShareIcon,
+  LogoIcon,
 };

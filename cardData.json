@@ -1,0 +1,679 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Rolling API",
+    "version": "v1"
+  },
+  "host": "rolling-api.vercel.app",
+  "schemes": ["https"],
+  "basePath": "/",
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "securityDefinitions": {
+    "Basic": {
+      "type": "basic"
+    }
+  },
+  "security": [
+    {
+      "Basic": []
+    }
+  ],
+  "paths": {
+    "/background-images/": {
+      "get": {
+        "operationId": "background-images_list",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["background-images"]
+      },
+      "parameters": []
+    },
+    "/profile-images/": {
+      "get": {
+        "operationId": "profile-images_list",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["profile-images"]
+      },
+      "parameters": []
+    },
+    "/{team}/messages/{id}/": {
+      "get": {
+        "operationId": "messages_read",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/MessageCreate"
+            }
+          }
+        },
+        "tags": ["messages"]
+      },
+      "put": {
+        "operationId": "messages_update",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MessageCreate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/MessageCreate"
+            }
+          }
+        },
+        "tags": ["messages"]
+      },
+      "patch": {
+        "operationId": "messages_partial_update",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MessageCreate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/MessageCreate"
+            }
+          }
+        },
+        "tags": ["messages"]
+      },
+      "delete": {
+        "operationId": "messages_delete",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": ["messages"]
+      },
+      "parameters": [
+        {
+          "name": "team",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/{team}/recipients/": {
+      "get": {
+        "operationId": "recipients_list",
+        "description": "",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of results to return per page.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "The initial index from which to return the results.",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "required": ["count", "results"],
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "next": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "previous": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Recipient"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": ["recipients"]
+      },
+      "post": {
+        "operationId": "recipients_create",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Recipient"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Recipient"
+            }
+          }
+        },
+        "tags": ["recipients"]
+      },
+      "parameters": [
+        {
+          "name": "team",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/{team}/recipients/{id}/": {
+      "get": {
+        "operationId": "recipients_read",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Recipient"
+            }
+          }
+        },
+        "tags": ["recipients"]
+      },
+      "delete": {
+        "operationId": "recipients_delete",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": ["recipients"]
+      },
+      "parameters": [
+        {
+          "name": "team",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/{team}/recipients/{recipient_id}/messages/": {
+      "get": {
+        "operationId": "recipients_messages_list",
+        "description": "",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of results to return per page.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "The initial index from which to return the results.",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "required": ["count", "results"],
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "next": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "previous": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/MessageRetrieve"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": ["recipients"]
+      },
+      "post": {
+        "operationId": "recipients_messages_create",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MessageCreate"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/MessageCreate"
+            }
+          }
+        },
+        "tags": ["recipients"]
+      },
+      "parameters": [
+        {
+          "name": "team",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "recipient_id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/{team}/recipients/{recipient_id}/reactions/": {
+      "get": {
+        "operationId": "recipients_reactions_list",
+        "description": "",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of results to return per page.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "The initial index from which to return the results.",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "required": ["count", "results"],
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "next": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "previous": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/ReactionRetrieve"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": ["recipients"]
+      },
+      "post": {
+        "operationId": "recipients_reactions_create",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ReactionCreate"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ReactionCreate"
+            }
+          }
+        },
+        "tags": ["recipients"]
+      },
+      "parameters": [
+        {
+          "name": "team",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "recipient_id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "MessageCreate": {
+      "required": [
+        "team",
+        "recipientId",
+        "sender",
+        "profileImageURL",
+        "relationship",
+        "content",
+        "font"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "team": {
+          "title": "Team",
+          "type": "string",
+          "minLength": 1
+        },
+        "recipientId": {
+          "title": "Recipientid",
+          "type": "integer"
+        },
+        "sender": {
+          "title": "Sender",
+          "type": "string",
+          "maxLength": 40,
+          "minLength": 1
+        },
+        "profileImageURL": {
+          "title": "ProfileImageURL",
+          "type": "string",
+          "format": "uri",
+          "maxLength": 300,
+          "minLength": 1
+        },
+        "relationship": {
+          "title": "Relationship",
+          "type": "string",
+          "enum": ["친구", "지인", "동료", "가족"]
+        },
+        "content": {
+          "title": "Content",
+          "type": "string",
+          "minLength": 1
+        },
+        "font": {
+          "title": "Font",
+          "type": "string",
+          "enum": ["Noto Sans", "Pretendard", "나눔명조", "나눔손글씨 손편지체"]
+        },
+        "createdAt": {
+          "title": "CreatedAt",
+          "type": "string",
+          "format": "date-time",
+          "readOnly": true
+        }
+      }
+    },
+    "Recipient": {
+      "required": ["team", "name", "backgroundColor"],
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "team": {
+          "title": "Team",
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "title": "Name",
+          "type": "string",
+          "maxLength": 40,
+          "minLength": 1
+        },
+        "backgroundColor": {
+          "title": "BackgroundColor",
+          "type": "string",
+          "enum": ["beige", "purple", "blue", "green"]
+        },
+        "backgroundImageURL": {
+          "title": "BackgroundImageURL",
+          "type": "string",
+          "format": "uri",
+          "maxLength": 300,
+          "minLength": 1,
+          "x-nullable": true
+        },
+        "createdAt": {
+          "title": "CreatedAt",
+          "type": "string",
+          "format": "date-time",
+          "readOnly": true
+        },
+        "messageCount": {
+          "title": "Messagecount",
+          "type": "string",
+          "readOnly": true
+        },
+        "recentMessages": {
+          "title": "Recentmessages",
+          "type": "string",
+          "readOnly": true
+        },
+        "reactionCount": {
+          "title": "Reactioncount",
+          "type": "integer",
+          "readOnly": true
+        },
+        "topReactions": {
+          "title": "Topreactions",
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "MessageRetrieve": {
+      "required": [
+        "sender",
+        "profileImageURL",
+        "relationship",
+        "content",
+        "font"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "recipientId": {
+          "title": "Recipientid",
+          "type": "integer",
+          "readOnly": true
+        },
+        "sender": {
+          "title": "Sender",
+          "type": "string",
+          "maxLength": 40,
+          "minLength": 1
+        },
+        "profileImageURL": {
+          "title": "ProfileImageURL",
+          "type": "string",
+          "format": "uri",
+          "maxLength": 300,
+          "minLength": 1
+        },
+        "relationship": {
+          "title": "Relationship",
+          "type": "string",
+          "enum": ["친구", "지인", "동료", "가족"]
+        },
+        "content": {
+          "title": "Content",
+          "type": "string",
+          "minLength": 1
+        },
+        "font": {
+          "title": "Font",
+          "type": "string",
+          "enum": ["Noto Sans", "Pretendard", "나눔명조", "나눔손글씨 손편지체"]
+        },
+        "createdAt": {
+          "title": "CreatedAt",
+          "type": "string",
+          "format": "date-time",
+          "readOnly": true
+        }
+      }
+    },
+    "ReactionRetrieve": {
+      "required": ["emoji"],
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "emoji": {
+          "title": "Emoji",
+          "type": "string",
+          "maxLength": 30,
+          "minLength": 1
+        },
+        "count": {
+          "title": "Count",
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        }
+      }
+    },
+    "ReactionCreate": {
+      "required": ["emoji", "type"],
+      "type": "object",
+      "properties": {
+        "emoji": {
+          "title": "Emoji",
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "title": "Type",
+          "type": "string",
+          "enum": ["increase", "decrease"]
+        },
+        "id": {
+          "title": "Id",
+          "type": "integer",
+          "readOnly": true
+        },
+        "recipient_id": {
+          "title": "Recipient id",
+          "type": "string",
+          "readOnly": true
+        },
+        "count": {
+          "title": "Count",
+          "type": "integer",
+          "readOnly": true
+        }
+      }
+    }
+  }
+}

@@ -1,42 +1,19 @@
-import styled from "styled-components";
-import Person from "../assets/icons/person.svg";
-
-const ProfileCircle = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 80px;
-  height: 80px;
-  background-color: ${({ theme }) => theme.colors.gray[300]};
-  border-radius: 80px;
-`;
-
-const ProfileBox = styled.div`
-  display: flex;
-  align-items: center;
-  width: 197px;
-  height: 65px;
-  background-color: ${({ theme }) => theme.colors.gray[300]};
-`;
-
-const Icon = styled.div`
-  margin-left: 22px;
-`;
+import * as P from "./Profile.style";
 
 function Profile() {
   return (
-    <ProfileCircle>
+    <P.ProfileCircle>
       <Person height={32} color={"white"} />
-    </ProfileCircle>
+    </P.ProfileCircle>
   );
 }
 
 function BoxProfile() {
   return (
-    <ProfileBox>
-      <Icon>Icon</Icon>
+    <P.ProfileBox>
+      <P.Icon>Icon</P.Icon>
       <Person style={{ marginLeft: 46 }} height={32} color={"white"} />
-    </ProfileBox>
+    </P.ProfileBox>
   );
 }
 

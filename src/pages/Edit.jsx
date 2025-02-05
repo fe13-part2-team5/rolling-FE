@@ -52,11 +52,12 @@ const mockData = [
 ];
 
 function Edit() {
+  const baseURL = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   const { id } = useParams();
   const handleDeleteRecipient = () => {
     axios
-      .delete(`https://rolling-api.vercel.app/13-5/recipient/${id}`)
+      .delete(`${baseURL}/recipient/${id}`)
       .then((response) => {
         console.log(response);
       })

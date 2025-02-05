@@ -2,13 +2,13 @@ import styled, { keyframes } from "styled-components";
 
 const slideUp = keyframes`
   from {
-    transform: translate(0, 64px);
     opacity: 0; 
+    transform: translate(0, 64px);
   }
 
   to {
-    transform: translate(0, 0);
     opacity: 1;
+    transform: translate(0, 0);
   }
 `;
 
@@ -23,53 +23,46 @@ const fadeOut = keyframes`
   }
 `;
 
-const ToastContainer = styled.div`
-  animation: ${({ $isVisible }) => ($isVisible ? slideUp : fadeOut)} 0.3s
-    ease-in-out;
-
-  width: 524px;
-  height: 64px;
-  background-color: #000000cc;
-  border-radius: 8px;
-
+export const ToastContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  width: 524px;
+  height: 64px;
   padding: 0 30px;
+  background-color: #000000cc;
+  border-radius: 8px;
+  animation: ${({ $isVisible }) => ($isVisible ? slideUp : fadeOut)} 0.3s
+    ease-in-out;
 `;
 
-const Content = styled.div`
+export const Content = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 12px;
 `;
 
-const Message = styled.div`
+export const Message = styled.div`
   ${({ theme }) => theme.fonts["16r"]};
   color: ${({ theme }) => theme.colors.white};
-
   user-select: none;
 `;
 
-const Button = styled.button`
+export const Button = styled.button`
   background-color: transparent;
   cursor: pointer;
 `;
 
-const ToasterContainer = styled.div`
-  z-index: 9999;
+export const ToasterContainer = styled.div`
   position: fixed;
   bottom: 4%;
   left: 50%;
-  transform: translateX(-50%);
-
   display: flex;
   flex-direction: column-reverse;
   justify-content: center;
   align-items: center;
   gap: 8px;
+  z-index: 9999;
+  transform: translateX(-50%);
 `;
-
-export { ToastContainer, Content, Message, Button, ToasterContainer };

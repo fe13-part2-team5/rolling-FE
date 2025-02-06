@@ -1,7 +1,7 @@
 import Header from "../../components/Header/Header";
 import HeaderService from "../../components/HeaderService/HeaderService";
-import CardList from "../../components/CardList";
 import PrimaryButton from "../../components/Buttons/PrimaryButton";
+import * as E from "./Edit.style";
 import { useNavigate, useParams } from "react-router-dom";
 import { deleteRecipient } from "../../api/Recipients";
 
@@ -52,7 +52,10 @@ const mockData = [
   },
 ];
 
-function Edit() {
+function Edit({
+  backgroundColor = "beige",
+  backgroundImageURL = "https://picsum.photos/id/683/3840/2160",
+}) {
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -67,12 +70,13 @@ function Edit() {
     <>
       <Header />
       <HeaderService />
-      <div>
-        <PrimaryButton onClick={handleClick} width={"92px"} height={"40px"}>
-          삭제하기
-        </PrimaryButton>
-        <CardList cards={mockData} />
-      </div>
+      <PrimaryButton onClick={handleClick} width={"92px"} height={"40px"}>
+        삭제하기
+      </PrimaryButton>
+      <E.Main
+        $backgroundColor={backgroundColor}
+        $backgroundImageURL={backgroundImageURL}
+      ></E.Main>
     </>
   );
 }

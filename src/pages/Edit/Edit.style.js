@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Main = styled.main`
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: start;
@@ -20,4 +21,8 @@ export const CardList = styled.div`
   width: 1200px;
 `;
 
-export const ButtonWrapper = styled.div``;
+export const ButtonWrapper = styled.div`
+  position: absolute;
+  top: 62px;
+  right: calc((99vw - 1200px) / 2);
+`;

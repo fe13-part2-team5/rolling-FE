@@ -16,7 +16,7 @@ export const Button = styled.button`
 export const ShareMenuWrapper = styled.div`
   position: absolute;
   top: 120%;
-  right: 0;
+  left: 40px;
   z-index: 1000;
 
   width: 140px;

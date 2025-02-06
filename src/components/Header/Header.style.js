@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const HeaderBox = styled.div`
-  position: fixed;
+  position: sticky;
   top: 0;
   z-index: 10;
 
@@ -13,9 +13,7 @@ export const HeaderBox = styled.div`
 `;
 export const StyledHeader = styled.header`
   display: flex;
-  position: fixed;
-  top: 0;
-  left: 50%;
+
   z-index: 10;
   justify-content: space-between;
   align-items: center;
@@ -27,8 +25,6 @@ export const StyledHeader = styled.header`
   padding: 11px 0;
 
   background-color: ${({ theme }) => theme.colors.white};
-
-  transform: translateX(-50%);
 `;
 
 export const StyledLink = styled(Link)`

@@ -32,7 +32,7 @@ export const Text = styled.p`
 
 export const EmojiPickerWrapper = styled.div`
   position: absolute;
-  top: 120%;
+  top: 130%;
   right: 100px;
   z-index: 999;
 

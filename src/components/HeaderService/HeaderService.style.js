@@ -1,19 +1,20 @@
 import styled from "styled-components";
 
 export const HeaderBox = styled.div`
-  position: fixed;
+  position: sticky;
   top: 65px;
   z-index: 10;
 
   width: 100%;
   height: 68px;
+
+  border-top: 1px solid ${({ theme }) => theme.colors.gray[300]};
   background-color: ${({ theme }) => theme.colors.white};
 `;
 
 export const HeaderContainer = styled.header`
-  position: fixed;
-  left: 50%;
-  z-index: 100;
+  top: 0;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -23,7 +24,6 @@ export const HeaderContainer = styled.header`
   height: 68px;
   margin: 0 auto;
   padding: 13px 0;
-  transform: translateX(-50%);
 `;
 
 export const RightSection = styled.div`

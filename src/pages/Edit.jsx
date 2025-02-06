@@ -1,8 +1,8 @@
 import Header from "../components/Header/Header";
 import HeaderService from "../components/HeaderService/HeaderService";
 import CardList from "../components/CardList";
-import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import { deleteRecipient } from "../api/Recipients";
 
 const mockData = [
   {
@@ -52,25 +52,8 @@ const mockData = [
 ];
 
 function Edit() {
-  const baseURL = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   const { id } = useParams();
-
-  const deleteRecipient = async (recipientId) => {
-    try {
-      const response = await axios.delete(
-        `${baseURL}/recipients/${recipientId}`
-      );
-      if (response.status === 200 || response.status === 204) {
-        return { success: true };
-      } else {
-        return { success: false };
-      }
-    } catch (error) {
-      console.error("롤링 페이퍼 대상 삭제 중 에러 발생:", error);
-      return { success: false };
-    }
-  };
 
   const handleClick = async () => {
     const response = await deleteRecipient(id);

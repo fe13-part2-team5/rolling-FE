@@ -1,8 +1,9 @@
-import Header from "../components/Header/Header";
-import HeaderService from "../components/HeaderService/HeaderService";
-import CardList from "../components/CardList";
+import Header from "../../components/Header/Header";
+import HeaderService from "../../components/HeaderService/HeaderService";
+import CardList from "../../components/CardList";
+import PrimaryButton from "../../components/Buttons/PrimaryButton";
 import { useNavigate, useParams } from "react-router-dom";
-import { deleteRecipient } from "../api/Recipients";
+import { deleteRecipient } from "../../api/Recipients";
 
 const mockData = [
   {
@@ -67,7 +68,9 @@ function Edit() {
       <Header />
       <HeaderService />
       <div>
-        <button onClick={handleClick}>삭제하기</button>
+        <PrimaryButton onClick={handleClick} width={"92px"} height={"40px"}>
+          삭제하기
+        </PrimaryButton>
         <CardList cards={mockData} />
       </div>
     </>

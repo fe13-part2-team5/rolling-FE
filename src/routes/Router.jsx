@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "../pages/Home";
 import Post from "../pages/Post";
-import Edit from "../pages/Edit";
+import Edit from "../pages/Edit/Edit";
 
 function Router() {
   return (

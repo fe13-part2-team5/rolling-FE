@@ -12,3 +12,14 @@ export const Main = styled.main`
       : theme.colors[$backgroundColor][200]};
   background-size: cover;
 `;
+
+export const CardList = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  row-gap: 28px;
+  column-gap: 24px;
+
+  width: 1200px;
+  margin: 0 24px;
+`;

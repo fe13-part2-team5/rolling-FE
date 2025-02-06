@@ -1,5 +1,6 @@
 import Header from "../../components/Header/Header";
 import HeaderService from "../../components/HeaderService/HeaderService";
+import MessageCard from "../../components/MessageCard";
 import PrimaryButton from "../../components/Buttons/PrimaryButton";
 import * as E from "./Edit.style";
 import { useNavigate, useParams } from "react-router-dom";
@@ -76,7 +77,13 @@ function Edit({
       <E.Main
         $backgroundColor={backgroundColor}
         $backgroundImageURL={backgroundImageURL}
-      ></E.Main>
+      >
+        <E.CardList>
+          {mockData.map((message, index) => (
+            <MessageCard key={index} {...message} />
+          ))}
+        </E.CardList>
+      </E.Main>
     </>
   );
 }

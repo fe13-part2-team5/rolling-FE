@@ -25,7 +25,7 @@ const EmojiBadgeContainer = styled.div`
   padding: 8px;
   background-color: rgba(0, 0, 0, 0.54);
   border-radius: 32px;
-  ${({ theme }) => theme.fonts["16r"].fontSize};
+  ${({ theme }) => theme.fonts["16r"]};
 `;
 
 const Emoji = styled.div`

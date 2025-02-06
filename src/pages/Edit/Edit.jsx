@@ -51,6 +51,83 @@ const mockData = [
     font: "Noto Sans",
     createdAt: "2023-11-01T08:04:12.852691Z",
   },
+  {
+    id: 31,
+    recipientId: 2,
+    sender: "이영준",
+    profileImageURL:
+      "https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8",
+    relationship: "지인",
+    content: "항상 응원합니다",
+    font: "Noto Sans",
+    createdAt: "2023-11-01T08:04:12.852691Z",
+  },
+  {
+    id: 31,
+    recipientId: 2,
+    sender: "이영준",
+    profileImageURL:
+      "https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8",
+    relationship: "지인",
+    content: "항상 응원합니다",
+    font: "Noto Sans",
+    createdAt: "2023-11-01T08:04:12.852691Z",
+  },
+  {
+    id: 31,
+    recipientId: 2,
+    sender: "이영준",
+    profileImageURL:
+      "https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8",
+    relationship: "지인",
+    content: "항상 응원합니다",
+    font: "Noto Sans",
+    createdAt: "2023-11-01T08:04:12.852691Z",
+  },
+  {
+    id: 31,
+    recipientId: 2,
+    sender: "이영준",
+    profileImageURL:
+      "https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8",
+    relationship: "지인",
+    content: "항상 응원합니다",
+    font: "Noto Sans",
+    createdAt: "2023-11-01T08:04:12.852691Z",
+  },
+  {
+    id: 31,
+    recipientId: 2,
+    sender: "이영준",
+    profileImageURL:
+      "https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8",
+    relationship: "지인",
+    content: "항상 응원합니다",
+    font: "Noto Sans",
+    createdAt: "2023-11-01T08:04:12.852691Z",
+  },
+  {
+    id: 31,
+    recipientId: 2,
+    sender: "이영준",
+    profileImageURL:
+      "https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8",
+    relationship: "지인",
+    content: "항상 응원합니다",
+    font: "Noto Sans",
+    createdAt: "2023-11-01T08:04:12.852691Z",
+  },
+  {
+    id: 31,
+    recipientId: 2,
+    sender: "이영준",
+    profileImageURL:
+      "https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8",
+    relationship: "지인",
+    content: "항상 응원합니다",
+    font: "Noto Sans",
+    createdAt: "2023-11-01T08:04:12.852691Z",
+  },
 ];
 
 function Edit({
@@ -71,13 +148,15 @@ function Edit({
     <>
       <Header />
       <HeaderService />
-      <PrimaryButton onClick={handleClick} width={"92px"} height={"40px"}>
-        삭제하기
-      </PrimaryButton>
       <E.Main
         $backgroundColor={backgroundColor}
         $backgroundImageURL={backgroundImageURL}
       >
+        <E.ButtonWrapper>
+          <PrimaryButton onClick={handleClick} width={"92px"} height={"40px"}>
+            삭제하기
+          </PrimaryButton>
+        </E.ButtonWrapper>
         <E.CardList>
           {mockData.map((message, index) => (
             <MessageCard key={index} {...message} />

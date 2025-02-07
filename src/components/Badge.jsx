@@ -1,21 +1,25 @@
 import * as B from "./Badge.style";
 
 const badgeStyles = {
-  지인: {
+  known: {
     backgroundColor: "beige",
     fontColor: "beige",
+    label: "지인",
   },
-  동료: {
+  colleague: {
     backgroundColor: "purple",
     fontColor: "purple",
+    label: "동료",
   },
-  가족: {
+  family: {
     backgroundColor: "green",
     fontColor: "green",
+    label: "가족",
   },
-  친구: {
+  friend: {
     backgroundColor: "blue",
     fontColor: "blue",
+    label: "친구",
   },
 };
 
@@ -27,7 +31,7 @@ function RelBadge({ value = Object.keys(badgeStyles)[0] }) {
       bgColor={selectedStyle.backgroundColor}
       fontColor={selectedStyle.fontColor}
     >
-      <B.Label>{value}</B.Label>
+      <B.Label>{selectedStyle.label}</B.Label>
     </B.Container>
   );
 }

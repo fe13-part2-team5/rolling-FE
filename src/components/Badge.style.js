@@ -12,9 +12,7 @@ const Container = styled.div`
 `;
 
 const Label = styled.label`
-  font-size: ${({ theme }) => theme.fonts["14r"].fontSize};
-  font-weight: ${({ theme }) => theme.fonts["14r"].fontWeight};
-  line-height: ${({ theme }) => theme.fonts["14r"].lineHeight};
+  ${({ theme }) => theme.fonts["14r"]};
 `;
 
 const EmojiBadgeContainer = styled.div`
@@ -27,9 +25,7 @@ const EmojiBadgeContainer = styled.div`
   padding: 8px;
   background-color: rgba(0, 0, 0, 0.54);
   border-radius: 32px;
-  font-size: ${({ theme }) => theme.fonts["16r"].fontSize};
-  font-weight: ${({ theme }) => theme.fonts["16r"].fontWeight};
-  line-height: ${({ theme }) => theme.fonts["16r"].lineHeight};
+  ${({ theme }) => theme.fonts["16r"]};
 `;
 
 const Emoji = styled.div`

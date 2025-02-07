@@ -1,8 +1,11 @@
 import PrimaryButtonWrapper from "./PrimaryButton.style";
 
-function PrimaryButton({ width, height, $disable, children }) {
+function PrimaryButton({ width, height, onClick, $disable, children }) {
+
+  if($disable) onClick = () => {};
+
   return(
-    <PrimaryButtonWrapper width={width} height={height} $disable={$disable}>{ children }</PrimaryButtonWrapper>
+    <PrimaryButtonWrapper width={width} height={height} onClick={onClick} $disable={$disable}>{ children }</PrimaryButtonWrapper>
   );
 }
 

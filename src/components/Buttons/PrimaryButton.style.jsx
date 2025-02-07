@@ -13,7 +13,6 @@ const PrimaryButtonWrapper = styled.button`
   align-items: center;
   width: ${(props) => props.width || '208px'};
   height: ${(props) => props.height || '56px'};
-  padding: 14px 24px;
   border: 0;
   border-radius: 12px;
   color: #FFFFFF;

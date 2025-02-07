@@ -1,8 +1,11 @@
 import * as DeleteButtonStyle from "./DeleteButtonStyle";
 
-function DeleteButton({ $disable }) {
+function DeleteButton({ onClick, $disable }) {
+
+  if($disable) onClick = () => {};
+
     return (
-      <DeleteButtonStyle.DeleteButtonWrapper $disable={$disable}>
+      <DeleteButtonStyle.DeleteButtonWrapper onClick={onClick} $disable={$disable}>
         {DeleteButtonStyle.returnDeletedIcon($disable)}
       </DeleteButtonStyle.DeleteButtonWrapper>
     );

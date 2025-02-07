@@ -5,6 +5,7 @@ export const Main = styled.main`
   display: flex;
   justify-content: center;
   align-items: start;
+  min-height: calc(100vh - 65px - 68px);
   padding: 113px 24px;
   background: ${({ $backgroundColor, $backgroundImageURL, theme }) =>
     $backgroundImageURL

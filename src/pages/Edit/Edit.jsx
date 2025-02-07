@@ -5,6 +5,8 @@ import PrimaryButton from "../../components/Buttons/PrimaryButton";
 import * as E from "./Edit.style";
 import { useNavigate, useParams } from "react-router-dom";
 import { deleteRecipient } from "../../api/Recipients";
+import { useEffect, useState } from "react";
+import { getMessages } from "../../api/Messages";
 
 const mockData = [
   {
@@ -136,6 +138,7 @@ function Edit({
 }) {
   const navigate = useNavigate();
   const { id } = useParams();
+  const [messages, setMessages] = useState([]);
 
   const handleClick = async () => {
     const response = await deleteRecipient(id);
@@ -143,6 +146,17 @@ function Edit({
       navigate("/list");
     }
   };
+
+  useEffect(() => {
+    const fetchMessages = async () => {
+      const result = await getMessages(id);
+      if (result.success) {
+        setMessages(result.data);
+      }
+    };
+
+    fetchMessages();
+  }, []);
 
   return (
     <>
@@ -158,7 +172,7 @@ function Edit({
           </PrimaryButton>
         </E.ButtonWrapper>
         <E.CardList>
-          {mockData.map((message, index) => (
+          {messages.map((message, index) => (
             <MessageCard key={index} {...message} />
           ))}
         </E.CardList>

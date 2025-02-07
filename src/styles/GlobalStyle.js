@@ -8,9 +8,12 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  /* 2. Remove default margin */
+  /* 2. Remove default margin, padding, border, and set default font */
   * {
     margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: "Pretendard", sans-serif;
   }
 
   body {

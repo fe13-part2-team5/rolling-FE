@@ -29,3 +29,17 @@ export const getMessages = async (recipientId, params = {}) => {
     return { success: false };
   }
 };
+
+export const deleteMessage = async (messageId) => {
+  try {
+    const response = await axios.delete(`${baseURL}/messages/${messageId}/`);
+    if (response.status === 200 || response.status === 204) {
+      return { success: true, data: response.data };
+    } else {
+      return { success: false };
+    }
+  } catch (error) {
+    console.error("메시지 삭제 중 에러 발생:", error);
+    return { success: false };
+  }
+};

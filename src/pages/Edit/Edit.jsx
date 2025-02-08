@@ -6,7 +6,7 @@ import * as E from "./Edit.style";
 import { useNavigate, useParams } from "react-router-dom";
 import { deleteRecipient } from "../../api/Recipients";
 import { useState, useEffect } from "react";
-import { getMessages } from "../../api/Messages";
+import { getMessages, deleteMessage } from "../../api/Messages";
 
 function Edit({
   backgroundColor = "beige",
@@ -20,6 +20,15 @@ function Edit({
     const response = await deleteRecipient(id);
     if (response.success) {
       navigate("/list");
+    }
+  };
+
+  const handleDeleteMessage = async (messageId) => {
+    const response = await deleteMessage(messageId);
+    if (response.success) {
+      setMessages((prevMessages) =>
+        prevMessages.filter((message) => message.id !== messageId)
+      );
     }
   };
 
@@ -56,7 +65,12 @@ function Edit({
         </E.ButtonWrapper>
         <E.CardList>
           {messages.map((message, index) => (
-            <MessageCard key={index} {...message} />
+            <MessageCard
+              key={index}
+              showDeleteButton={true}
+              {...message}
+              onDelete={handleDeleteMessage}
+            />
           ))}
         </E.CardList>
       </E.Main>

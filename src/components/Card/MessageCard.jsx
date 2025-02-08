@@ -8,7 +8,10 @@ import {
   MessageContainer,
   MessageFont,
   MessageDateFont,
-} from "../styles/MessageCardStyle";
+  DeleteContainer,
+} from "./MessageCardStyle";
+import DeleteButton from "../Buttons/DeleteButton";
+import { RelBadge } from "../Badge.jsx";
 
 function MessageCard({
   recipientId,
@@ -18,17 +21,25 @@ function MessageCard({
   content,
   font,
   createdAt,
+  showDeleteButton = false,
+  onDelete,
+  onClick,
 }) {
   return (
-    <MessageCardContainer>
+    <MessageCardContainer onClick={onClick}>
       <SenderContainer>
         <MessageProfileIcon $profileImageURL={profileImageURL} />
         <div>
           <SenderFont>
             From. <SenderBoldText>{sender}</SenderBoldText>
           </SenderFont>
-          <RelationshipBadge>{relationship}</RelationshipBadge>
+          <RelBadge>{relationship}</RelBadge>
         </div>
+        <DeleteContainer>
+          {showDeleteButton && (
+            <DeleteButton $disable={false} onClick={() => onDelete(id)} />
+          )}
+        </DeleteContainer>
       </SenderContainer>
       <MessageContainer>
         <MessageFont>{content}</MessageFont>

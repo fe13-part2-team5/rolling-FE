@@ -11,7 +11,8 @@ import {
   ReactionContainer,
   ReactionIcons,
   CardListContainer,
-} from "../styles/CardListStyle";
+} from "./ListCardStyle.js";
+import { EmojiBadge } from "../Badge.jsx";
 
 function ProfileList({ recentMessages = [], messageCount = 0 }) {
   const maxVisibleProfiles = 3;
@@ -61,10 +62,7 @@ function Card({
         </CardCountText>
         <ReactionContainer>
           <ReactionIcons>
-            {/*가장 많이 리액션된 아이콘 3개와 개수*/}
-            <span>👍 20</span>
-            <span>😆 12</span>
-            <span>🥺 7</span>
+            <EmojiBadge />
           </ReactionIcons>
         </ReactionContainer>
       </CardContent>
@@ -72,7 +70,7 @@ function Card({
   );
 }
 
-function CardList({ cards }) {
+function ListCard({ cards }) {
   if (!cards || cards.length === 0) {
     return <p>등록된 카드가 없습니다. 새로운 롤링 페이퍼를 만들어 보세요!</p>;
   }
@@ -83,7 +81,9 @@ function CardList({ cards }) {
         <Card
           key={id}
           name={card.name}
+          profileImageURL={card.profileImageURL}
           messageCount={card.messageCount}
+          reactionCount={card.reactionCount}
           backgroundColor={card.backgroundColor}
           backgroundImageURL={card.backgroundImageURL}
         />
@@ -92,4 +92,4 @@ function CardList({ cards }) {
   );
 }
 
-export default CardList;
+export default ListCard;

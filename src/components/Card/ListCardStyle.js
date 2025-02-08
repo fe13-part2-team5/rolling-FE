@@ -10,14 +10,14 @@ export const CardContainer = styled.div`
     props.$backgroundImageURL
       ? `url(${props.$backgroundImageURL}) no-repeat center/cover`
       : props.$backgroundColor === "purple"
-      ? `#ecd9ff url("/assets/card-list/pattern_purple.png") no-repeat right bottom/auto`
-      : props.$backgroundColor === "blue"
-      ? `#b1e4ff url("/assets/card-list/pattern_blue.png") no-repeat right bottom/auto`
-      : props.$backgroundColor === "beige"
-      ? `#ffe2ad url("/assets/card-list/pattern_beige.png") no-repeat right bottom/auto`
-      : props.$backgroundColor === "green"
-      ? `#d0f5c3 url("/assets/card-list/pattern_green.png") no-repeat right bottom/auto`
-      : "#ffffff"};
+        ? `#ecd9ff url("/assets/card-list/pattern_purple.png") no-repeat right bottom/auto`
+        : props.$backgroundColor === "blue"
+          ? `#b1e4ff url("/assets/card-list/pattern_blue.png") no-repeat right bottom/auto`
+          : props.$backgroundColor === "beige"
+            ? `#ffe2ad url("/assets/card-list/pattern_beige.png") no-repeat right bottom/auto`
+            : props.$backgroundColor === "green"
+              ? `#d0f5c3 url("/assets/card-list/pattern_green.png") no-repeat right bottom/auto`
+              : "#ffffff"};
   background-size: auto;
   background-repeat: no-repeat;
   background-position: right bottom;
@@ -118,6 +118,9 @@ export const CardListContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin: 166px 380px auto;
+  overflow-x: auto;
+  max-width: 1200px;
+  margin: 0 auto;
   gap: 20px;
+  }
 `;

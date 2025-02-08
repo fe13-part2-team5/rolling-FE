@@ -3,17 +3,18 @@ import { DeletedIcon } from "../Icons";
 import { theme } from "../../styles/theme";
 
 export const DeleteButtonWrapper = styled.button`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 36px;
-    height: 36px;
-    padding: 6px;  
-    border: 1px solid #CCCCCC;
-    border-radius: 6px;
-    ${(props) => props.$disable ?
-      `background-color: #CCCCCC;` :
-      `background-color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 6px;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  ${(props) =>
+    props.$disable
+      ? `background-color: #CCCCCC;`
+      : `background-color: #FFFFFF;
     
       &:hover {
           cursor: pointer;
@@ -23,11 +24,10 @@ export const DeleteButtonWrapper = styled.button`
       &:focus {
           border: 1px solid #555555;
           background-color: #FFFFFF;
-      }`
-    }
+      }`}
 `;
 
 export const returnDeletedIcon = (disable) => {
-  const color = (disable ? theme.colors.white : theme.colors.black);
-  return <DeletedIcon color={color} />
-}
+  const color = disable ? theme.colors.white : theme.colors.black;
+  return <DeletedIcon color={color} />;
+};

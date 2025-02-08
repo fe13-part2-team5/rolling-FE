@@ -82,3 +82,8 @@ export const MessageDateFont = styled.p`
   color: #999999;
   letter-spacing: -0.5%;
 `;
+
+export const DeleteContainer = styled.div`
+  position: absolute;
+  right: 24px;
+`;

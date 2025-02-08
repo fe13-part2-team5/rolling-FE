@@ -15,13 +15,10 @@ const baseURL = import.meta.env.VITE_API_URL;
  */
 export const getMessages = async (
   recipientId,
-  params = { limit: 6, offset: 0 }
+  url = `${baseURL}/recipients/${recipientId}/messages/?limit=6&offset=0`
 ) => {
   try {
-    const response = await axios.get(
-      `${baseURL}/recipients/${recipientId}/messages/`,
-      { params: params }
-    );
+    const response = await axios.get(url);
     if (response.status === 200) {
       return { success: true, data: response.data };
     } else {

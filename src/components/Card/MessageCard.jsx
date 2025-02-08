@@ -15,6 +15,7 @@ import { RelBadge } from "../Badge.jsx";
 
 function MessageCard({
   recipientId,
+  id,
   profileImageURL,
   sender,
   relationship,

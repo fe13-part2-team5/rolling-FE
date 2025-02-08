@@ -1,136 +1,12 @@
 import Header from "../../components/Header/Header";
 import HeaderService from "../../components/HeaderService/HeaderService";
-import MessageCard from "../../components/MessageCard";
+import MessageCard from "../../components/Card/MessageCard";
 import PrimaryButton from "../../components/Buttons/PrimaryButton";
 import * as E from "./Edit.style";
 import { useNavigate, useParams } from "react-router-dom";
 import { deleteRecipient } from "../../api/Recipients";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { getMessages } from "../../api/Messages";
-
-const mockData = [
-  {
-    id: 32,
-    recipientId: 2,
-    sender: "김하은",
-    profileImageURL:
-      "https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8",
-    relationship: "가족",
-    content: "열심히 일하는 모습 멋있습니다.",
-    font: "Pretendard",
-    createdAt: "2023-11-01T08:05:25.399056Z",
-  },
-  {
-    id: 31,
-    recipientId: 2,
-    sender: "이영준",
-    profileImageURL:
-      "https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8",
-    relationship: "지인",
-    content: "항상 응원합니다",
-    font: "Noto Sans",
-    createdAt: "2023-11-01T08:04:12.852691Z",
-  },
-  {
-    id: 31,
-    recipientId: 2,
-    sender: "이영준",
-    profileImageURL:
-      "https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8",
-    relationship: "지인",
-    content: "항상 응원합니다",
-    font: "Noto Sans",
-    createdAt: "2023-11-01T08:04:12.852691Z",
-  },
-  {
-    id: 31,
-    recipientId: 2,
-    sender: "이영준",
-    profileImageURL:
-      "https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8",
-    relationship: "지인",
-    content: "항상 응원합니다",
-    font: "Noto Sans",
-    createdAt: "2023-11-01T08:04:12.852691Z",
-  },
-  {
-    id: 31,
-    recipientId: 2,
-    sender: "이영준",
-    profileImageURL:
-      "https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8",
-    relationship: "지인",
-    content: "항상 응원합니다",
-    font: "Noto Sans",
-    createdAt: "2023-11-01T08:04:12.852691Z",
-  },
-  {
-    id: 31,
-    recipientId: 2,
-    sender: "이영준",
-    profileImageURL:
-      "https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8",
-    relationship: "지인",
-    content: "항상 응원합니다",
-    font: "Noto Sans",
-    createdAt: "2023-11-01T08:04:12.852691Z",
-  },
-  {
-    id: 31,
-    recipientId: 2,
-    sender: "이영준",
-    profileImageURL:
-      "https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8",
-    relationship: "지인",
-    content: "항상 응원합니다",
-    font: "Noto Sans",
-    createdAt: "2023-11-01T08:04:12.852691Z",
-  },
-  {
-    id: 31,
-    recipientId: 2,
-    sender: "이영준",
-    profileImageURL:
-      "https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8",
-    relationship: "지인",
-    content: "항상 응원합니다",
-    font: "Noto Sans",
-    createdAt: "2023-11-01T08:04:12.852691Z",
-  },
-  {
-    id: 31,
-    recipientId: 2,
-    sender: "이영준",
-    profileImageURL:
-      "https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8",
-    relationship: "지인",
-    content: "항상 응원합니다",
-    font: "Noto Sans",
-    createdAt: "2023-11-01T08:04:12.852691Z",
-  },
-  {
-    id: 31,
-    recipientId: 2,
-    sender: "이영준",
-    profileImageURL:
-      "https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8",
-    relationship: "지인",
-    content: "항상 응원합니다",
-    font: "Noto Sans",
-    createdAt: "2023-11-01T08:04:12.852691Z",
-  },
-  {
-    id: 31,
-    recipientId: 2,
-    sender: "이영준",
-    profileImageURL:
-      "https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8",
-    relationship: "지인",
-    content: "항상 응원합니다",
-    font: "Noto Sans",
-    createdAt: "2023-11-01T08:04:12.852691Z",
-  },
-];
 
 function Edit({
   backgroundColor = "beige",
@@ -140,7 +16,7 @@ function Edit({
   const { id } = useParams();
   const [messages, setMessages] = useState([]);
 
-  const handleClick = async () => {
+  const handleDeleteRecipient = async () => {
     const response = await deleteRecipient(id);
     if (response.success) {
       navigate("/list");
@@ -149,9 +25,12 @@ function Edit({
 
   useEffect(() => {
     const fetchMessages = async () => {
-      const result = await getMessages(id);
-      if (result.success) {
-        setMessages(result.data);
+      const response = await getMessages(id);
+
+      if (response.success) {
+        const data = response.data;
+        const newMessages = data.results;
+        setMessages(newMessages);
       }
     };
 
@@ -167,7 +46,11 @@ function Edit({
         $backgroundImageURL={backgroundImageURL}
       >
         <E.ButtonWrapper>
-          <PrimaryButton onClick={handleClick} width={"92px"} height={"40px"}>
+          <PrimaryButton
+            onClick={handleDeleteRecipient}
+            width={"92px"}
+            height={"40px"}
+          >
             삭제하기
           </PrimaryButton>
         </E.ButtonWrapper>

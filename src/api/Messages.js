@@ -7,13 +7,16 @@ const baseURL = import.meta.env.VITE_API_URL;
  * @async
  * @param {number|string} recipientId - 메시지를 가져올 대상 수신자의 ID
  * @param {Object} [params={}] - API 요청에 전달할 쿼리 파라미터 (예: limit, offset)
- * @param {number} [params.limit] - 가져올 메시지 개수 (기본값 없음)
- * @param {number} [params.offset] - 시작 위치 (페이징 처리에 사용)
+ * @param {number} [params.limit] - 리턴받기 원하는 질문 대상 객체 수. 값을 전달하지 않으면 8.
+ * @param {number} [params.offset] - 가장 앞 객체부터 건너뛰고 싶은 객체 수.
  * @returns {Promise<Object|Array>}
  * - 요청 성공 시: `{ success: true, data: 응답 데이터 }` 반환
  * - 요청 실패 시: `{ success: false }` 반환
  */
-export const getMessages = async (recipientId, params = {}) => {
+export const getMessages = async (
+  recipientId,
+  params = { limit: 6, offset: 0 }
+) => {
   try {
     const response = await axios.get(
       `${baseURL}/recipients/${recipientId}/messages/`,

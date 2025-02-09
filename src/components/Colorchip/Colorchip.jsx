@@ -2,14 +2,9 @@ import { useEffect, useState } from "react";
 import * as C from "./Colorchip.style";
 import { CompletedIcon } from "../Icons";
 import { useTheme } from "styled-components";
-import background1 from "../../assets/images/background1.jpg";
-import background2 from "../../assets/images/background2.jpg";
-import background3 from "../../assets/images/background3.jpg";
-import background4 from "../../assets/images/background4.jpg";
 
-function Colorchip({ isImage }) {
+function Colorchip({ isImage, images }) {
   const colors = ["beige", "purple", "blue", "green"];
-  const images = [background1, background2, background3, background4];
 
   const [selectedColor, setSelectedColor] = useState(colors[0]);
   const [selectedImage, setSelectedImage] = useState(images[0]);

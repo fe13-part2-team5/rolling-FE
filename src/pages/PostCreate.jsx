@@ -4,13 +4,30 @@ import PrimaryButton from "../components/Buttons/PrimaryButton";
 import ToggleButton from "../components/Buttons/ToggleButton";
 import { InputField } from "../components/TextField/TextField";
 import * as P from "./PostAndMessage.style";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function PostCreate() {
+  const [images, setImages] = useState([]);
   const [isToggled, setIsToggled] = useState(false);
   const [name, setName] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const getBackgroundImage = async () => {
+      try {
+        const response = await axios.get(
+          "https://rolling-api.vercel.app/background-images/"
+        );
+        setImages(response.data.imageUrls);
+      } catch (error) {
+        console.error("이미지 로드 실패:", error);
+      }
+    };
+
+    getBackgroundImage();
+  }, []);
 
   const isButtonDisabled = !name.trim();
 
@@ -56,7 +73,7 @@ function PostCreate() {
           </P.StyledToggleButton>
 
           {/* Colorchip 컴포넌트 수정 - 이미지 */}
-          <Colorchip isImage={isToggled} />
+          <Colorchip isImage={isToggled} images={images} />
         </P.Section>
         <PrimaryButton
           width="100%"

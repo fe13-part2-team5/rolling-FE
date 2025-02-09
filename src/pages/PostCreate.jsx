@@ -15,12 +15,21 @@ function PostCreate() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const preloadImages = (imageUrls) => {
+      imageUrls.forEach((url) => {
+        const img = new Image();
+        img.src = url;
+      });
+    };
+
     const getBackgroundImage = async () => {
       try {
         const response = await axios.get(
           "https://rolling-api.vercel.app/background-images/"
         );
-        setImages(response.data.imageUrls);
+        const imageUrls = response.data.imageUrls;
+        setImages(imageUrls);
+        preloadImages(imageUrls);
       } catch (error) {
         console.error("이미지 로드 실패:", error);
       }

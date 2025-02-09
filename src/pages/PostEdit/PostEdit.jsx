@@ -3,16 +3,18 @@ import HeaderService from "../../components/HeaderService/HeaderService";
 import MessageCard from "../../components/Card/MessageCard";
 import PrimaryButton from "../../components/Buttons/PrimaryButton";
 import * as E from "./PostEdit.style";
+import { ToastContext } from "../../context/ToastContext";
 import { getRecipient, deleteRecipient } from "../../api/Recipients";
 import { getReactions } from "../../api/Reactions";
 import { getMessages, deleteMessage } from "../../api/Messages";
 import { useNavigate, useParams } from "react-router-dom";
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, useContext } from "react";
 
 function PostEdit() {
   const navigate = useNavigate();
   const { id } = useParams();
   const observerRef = useRef(null);
+  const { addToast } = useContext(ToastContext);
   const [recipient, setRecipient] = useState(null);
   const [backgroundColor, setBackgroundColor] = useState(null);
   const [backgroundImageURL, setBackgroundImageURL] = useState(null);
@@ -24,6 +26,7 @@ function PostEdit() {
   const handleDeleteRecipient = async () => {
     const response = await deleteRecipient(id);
     if (response.success) {
+      addToast("롤링 페이퍼가 삭제되었습니다.");
       navigate("/list");
     }
   };
@@ -34,6 +37,7 @@ function PostEdit() {
       setMessages((prevMessages) =>
         prevMessages.filter((message) => message.id !== messageId)
       );
+      addToast("메시지가 삭제되었습니다.");
     }
   };
 

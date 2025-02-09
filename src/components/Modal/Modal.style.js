@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -52,9 +52,6 @@ export const Name = styled.span`
   ${({ theme }) => theme.fonts["20b"]};
 `;
 
-// TODO: Badge 컴포넌트 구현되면 수정하기
-export const Badge = styled.div``;
-
 export const ProfileImage = styled.div`
   width: 56px;
   height: 56px;
@@ -80,17 +77,4 @@ export const Content = styled.div`
   }}
   color: ${({ theme }) => theme.colors.gray[500]};
   overflow-y: scroll;
-`;
-
-// TODO: Button 컴포넌트 구현되면 수정하기
-export const Button = styled.button`
-  width: 120px;
-  height: 40px;
-  margin-top: 24px;
-  padding: 7px 16px;
-  color: ${({ theme }) => theme.colors.white};
-  background-color: ${({ theme }) => theme.colors.purple[600]};
-  border: 0px;
-  border-radius: 6px;
-  cursor: pointer;
 `;

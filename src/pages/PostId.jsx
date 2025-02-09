@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import HeaderService from "../components/HeaderService/HeaderService";
 import HeaderLogoOnly from "../components/Header/HeaderLogoOnly";
-import MessageCard from "../components/MessageCard";
+import MessageCard from "../components/Card/MessageCard";
 import Modal from "../components/Modal/Modal";
 import { messageData } from "./MessageData";
 import { MessageCardBox, Box, PlusBox } from "./PostId.style";

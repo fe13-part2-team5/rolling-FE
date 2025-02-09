@@ -1,6 +1,6 @@
 import Header from "../../components/Header/Header";
 import HeaderService from "../../components/HeaderService/HeaderService";
-import MessageCard from "../../components/MessageCard";
+import MessageCard from "../../components/Card/MessageCard";
 import PrimaryButton from "../../components/Buttons/PrimaryButton";
 import * as E from "./Edit.style";
 import { useNavigate, useParams } from "react-router-dom";

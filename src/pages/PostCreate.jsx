@@ -12,7 +12,8 @@ function PostCreate() {
   const [images, setImages] = useState([]);
   const [isToggled, setIsToggled] = useState(false);
   const [name, setName] = useState("");
-  const [selectedBackground, setSelectedBackground] = useState("");
+  const [selectedColor, setSelectedColor] = useState("beige"); // 초기 컬러는 beige
+  const [selectedImageURL, setSelectedImageURL] = useState(null); // 초기 이미지 URL은 null
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -31,21 +32,26 @@ function PostCreate() {
         const imageUrls = response.data.imageUrls;
         setImages(imageUrls);
         preloadImages(imageUrls);
+
+        if (!selectedImageURL) {
+          setSelectedImageURL(imageUrls[0]); // 이미지 리스트에서 첫 번째 값을 기본값으로 설정
+        }
       } catch (error) {
         console.error("이미지 로드 실패:", error);
       }
     };
 
     getBackgroundImage();
-  }, []);
+  }, [selectedImageURL]);
 
-  const isButtonDisabled = !name.trim() || !selectedBackground;
+  const isButtonDisabled = !name.trim();
 
   const handleSubmit = async () => {
     if (!isButtonDisabled) {
       const newPostData = {
         name: name,
-        backgroundColor: selectedBackground,
+        backgroundColor: selectedColor,
+        backgroundImageURL: isToggled ? selectedImageURL : null,
       };
 
       try {
@@ -62,11 +68,16 @@ function PostCreate() {
   };
 
   const handleToggle = () => {
-    setIsToggled(!isToggled);
+    setIsToggled((prev) => !prev); // 토글 상태 전환
   };
 
   const handleBackgroundSelect = (selected) => {
-    setSelectedBackground(selected);
+    if (isToggled) {
+      setSelectedImageURL(selected); // 이미지를 선택하면 이미지 URL 설정
+    } else {
+      setSelectedColor(selected); // 컬러를 선택하면 컬러 설정
+      setSelectedImageURL(null); // 이미지는 null로 설정
+    }
   };
 
   return (

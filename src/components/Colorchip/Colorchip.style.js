@@ -13,7 +13,8 @@ export const ColorChipItem = styled.div`
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 16px;
   background-color: ${({ theme, item, isImage }) =>
-    isImage ? "transparent" : theme.colors[item][200]};
+    isImage ? "transparent" : theme.colors[item]?.[200] || "#f0f0f0"};
+
   background-image: ${({ item, isImage }) =>
     isImage ? `url(${item})` : "none"};
   background-size: cover;

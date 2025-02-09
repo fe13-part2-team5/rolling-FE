@@ -1,10 +1,20 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Backdrop = styled.div`
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #00000080;
+  border-radius: 10px;
+  z-index: 20;
+`;
+
+export const Container = styled.div`
   z-index: 100;
   display: flex;
   flex-direction: column;

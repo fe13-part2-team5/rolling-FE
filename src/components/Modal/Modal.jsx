@@ -23,24 +23,26 @@ function Modal({ message, handleClose }) {
   } = message;
 
   return (
-    <M.Container>
-      <M.Header>
-        <M.ProfileWrapper>
-          <M.ProfileImage $image={profileImageURL} />
-          <M.TitleWrapper>
-            <M.Title>
-              From. <M.Name>{sender}</M.Name>
-            </M.Title>
-            <RelBadge value={rel[relationship]} />
-          </M.TitleWrapper>
-        </M.ProfileWrapper>
-        <M.Date>{formatDate(createdAt)}</M.Date>
-      </M.Header>
-      <M.Content $font={font}>{content}</M.Content>
-      <PrimaryButton width={"120px"} height={"40px"} onClick={handleClose}>
-        확인
-      </PrimaryButton>
-    </M.Container>
+    <M.Backdrop onClick={handleClose}>
+      <M.Container>
+        <M.Header>
+          <M.ProfileWrapper>
+            <M.ProfileImage $image={profileImageURL} />
+            <M.TitleWrapper>
+              <M.Title>
+                From. <M.Name>{sender}</M.Name>
+              </M.Title>
+              <RelBadge value={rel[relationship]} />
+            </M.TitleWrapper>
+          </M.ProfileWrapper>
+          <M.Date>{formatDate(createdAt)}</M.Date>
+        </M.Header>
+        <M.Content $font={font}>{content}</M.Content>
+        <PrimaryButton width={"120px"} height={"40px"} onClick={handleClose}>
+          확인
+        </PrimaryButton>
+      </M.Container>
+    </M.Backdrop>
   );
 }
 

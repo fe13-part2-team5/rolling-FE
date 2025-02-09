@@ -118,7 +118,7 @@ function Edit() {
           ))}
         </E.CardList>
       </E.Main>
-      <div ref={observerRef} style={{ height: "1px", background: "black" }} />
+      <E.InfiniteScrollTrigger ref={observerRef} />
     </>
   );
 }

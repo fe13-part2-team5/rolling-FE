@@ -29,3 +29,5 @@ export const ButtonWrapper = styled.div`
   top: 62px;
   right: calc((99vw - 1200px) / 2);
 `;
+
+export const InfiniteScrollTrigger = styled.div``;

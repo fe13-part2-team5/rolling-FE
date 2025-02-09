@@ -11,7 +11,7 @@ export const getRecipient = async (recipientId) => {
       return { success: false };
     }
   } catch (error) {
-    console.error("롤링 페이퍼 대상 불러오기기 중 에러 발생:", error);
+    console.error("롤링 페이퍼 대상 불러오기 중 에러 발생:", error);
     return { success: false };
   }
 };

@@ -2,21 +2,21 @@ import Header from "../../components/Header/Header";
 import HeaderService from "../../components/HeaderService/HeaderService";
 import MessageCard from "../../components/Card/MessageCard";
 import PrimaryButton from "../../components/Buttons/PrimaryButton";
-import * as E from "./Edit.style";
+import * as E from "./PostEdit.style";
 import { getRecipient, deleteRecipient } from "../../api/Recipients";
 import { getMessages, deleteMessage } from "../../api/Messages";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect, useRef, useCallback } from "react";
 
-function Edit() {
+function PostEdit() {
   const navigate = useNavigate();
   const { id } = useParams();
+  const observerRef = useRef(null);
   const [backgroundColor, setBackgroundColor] = useState(null);
   const [backgroundImageURL, setBackgroundImageURL] = useState(null);
   const [messages, setMessages] = useState([]);
   const [next, setNext] = useState(null);
   const [loading, setLoading] = useState(false);
-  const observerRef = useRef(null);
 
   const handleDeleteRecipient = async () => {
     const response = await deleteRecipient(id);
@@ -123,4 +123,4 @@ function Edit() {
   );
 }
 
-export default Edit;
+export default PostEdit;

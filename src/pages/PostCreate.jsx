@@ -12,8 +12,8 @@ function PostCreate() {
   const [images, setImages] = useState([]);
   const [isToggled, setIsToggled] = useState(false);
   const [name, setName] = useState("");
-  const [selectedColor, setSelectedColor] = useState("beige"); // 초기 컬러는 beige
-  const [selectedImageURL, setSelectedImageURL] = useState(null); // 초기 이미지 URL은 null
+  const [selectedColor, setSelectedColor] = useState("beige");
+  const [selectedImageURL, setSelectedImageURL] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,7 +34,7 @@ function PostCreate() {
         preloadImages(imageUrls);
 
         if (!selectedImageURL) {
-          setSelectedImageURL(imageUrls[0]); // 이미지 리스트에서 첫 번째 값을 기본값으로 설정
+          setSelectedImageURL(imageUrls[0]);
         }
       } catch (error) {
         console.error("이미지 로드 실패:", error);
@@ -68,15 +68,15 @@ function PostCreate() {
   };
 
   const handleToggle = () => {
-    setIsToggled((prev) => !prev); // 토글 상태 전환
+    setIsToggled((prev) => !prev);
   };
 
   const handleBackgroundSelect = (selected) => {
     if (isToggled) {
-      setSelectedImageURL(selected); // 이미지를 선택하면 이미지 URL 설정
+      setSelectedImageURL(selected);
     } else {
-      setSelectedColor(selected); // 컬러를 선택하면 컬러 설정
-      setSelectedImageURL(null); // 이미지는 null로 설정
+      setSelectedColor(selected);
+      setSelectedImageURL(null);
     }
   };
 

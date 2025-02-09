@@ -25,10 +25,10 @@ function Colorchip({ isImage, images, onSelect }) {
   const handleBackgroundSelect = (item, index) => {
     if (isImage) {
       setSelectedImage(images[index]);
-      onSelect(images[index]); // 선택된 이미지 부모로 전달
+      onSelect(images[index]);
     } else {
       setSelectedColor(item);
-      onSelect(item); // 선택된 색상 부모로 전달
+      onSelect(item);
     }
   };
 

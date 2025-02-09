@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CardContainer = styled.div`
+const CardContainer = styled.div`
   display: flex;
   justify-content: space-between;
   position: relative;
@@ -26,14 +26,14 @@ export const CardContainer = styled.div`
   box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.14);
 `;
 
-export const CardContent = styled.div`
+const CardContent = styled.div`
   width: 227px;
   height: 210px;
   margin: 30px 24px auto;
   gap: 43px;
 `;
 
-export const CardTitle = styled.h3`
+const CardTitle = styled.h3`
   margin-bottom: 15px;
   ${(props) => props.theme.fonts["24b"]}
   color: ${(props) =>
@@ -43,7 +43,8 @@ export const CardTitle = styled.h3`
   letter-spacing: -1%;
 `;
 
-export const ProfileContainer = styled.div`
+
+const ProfileContainer = styled.div`
   display: flex;
   position: relative;
   align-items: center;
@@ -51,7 +52,8 @@ export const ProfileContainer = styled.div`
   margin-bottom: 15px;
 `;
 
-export const ProfileIcon = styled.div`
+
+const ProfileIcon = styled.div`
   position: absolute;
   left: ${(props) => props.$index * 20}px;
   z-index: ${(props) => 10 - props.$index};
@@ -64,7 +66,8 @@ export const ProfileIcon = styled.div`
   border: 1.5px solid white;
 `;
 
-export const MoreMessagesCount = styled.div`
+
+const MoreMessagesCount = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -77,13 +80,13 @@ export const MoreMessagesCount = styled.div`
   border-radius: 30px;
 `;
 
-export const MoreMessageText = styled.p`
+const MoreMessageText = styled.p`
   ${(props) => props.theme.fonts["12r"]};
   color: #555555;
   letter-spacing: -0.5%;
 `;
 
-export const CardCountText = styled.p`
+const CardCountText = styled.p`
   ${(props) => props.theme.fonts["16r"]}
   color: ${(props) =>
     props.backgroundImageURL && props.backgroundImageURL !== ""
@@ -91,11 +94,12 @@ export const CardCountText = styled.p`
       : "#3A3A3A"};
   letter-spacing: -1%;
 `;
-export const CountBoldText = styled.span`
+
+const CountBoldText = styled.span`
   ${(props) => props.theme.fonts["16b"]}
 `;
 
-export const ReactionContainer = styled.div`
+const ReactionContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -105,7 +109,7 @@ export const ReactionContainer = styled.div`
   border-top: 1px solid rgba(0, 0, 0, 0.12);
 `;
 
-export const ReactionIcons = styled.div`
+const ReactionIcons = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -114,7 +118,8 @@ export const ReactionIcons = styled.div`
   gap: 8px;
 `;
 
-export const CardListContainer = styled.div`
+
+const CardListContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -122,5 +127,21 @@ export const CardListContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   gap: 20px;
-  }
+  transition: transform 0.3s ease-in-out;
+  will-change: transform;
 `;
+
+export {
+  CardContainer,
+  CardContent,
+  CardTitle,
+  ProfileContainer,
+  ProfileIcon,
+  MoreMessagesCount,
+  MoreMessageText,
+  CardCountText,
+  CountBoldText,
+  ReactionContainer,
+  ReactionIcons,
+  CardListContainer,
+};

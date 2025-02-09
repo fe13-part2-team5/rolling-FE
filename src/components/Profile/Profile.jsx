@@ -1,4 +1,4 @@
-import { PersonIcon } from "./Icons";
+import { PersonIcon } from "../Icons";
 import * as P from "./Profile.style";
 
 function Profile() {

@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import * as T from "./TextField.style";
+import { ArrowDownIcon } from "../Icons";
+import { useTheme } from "styled-components";
 
 // 데이터 예시
 const optionData = [
@@ -10,6 +12,7 @@ const optionData = [
 ];
 
 function Dropdown({ width = "100%" }) {
+  const theme = useTheme();
   const selectRef = useRef(null);
   const [isShowOptions, setIsShowOptions] = useState(false);
   const [currentValue, setCurrentValue] = useState(optionData[0].value);
@@ -38,7 +41,10 @@ function Dropdown({ width = "100%" }) {
         onClick={() => setIsShowOptions((prev) => !prev)}
         ref={selectRef}
       >
-        <T.Label $show={isShowOptions}>{currentValue}</T.Label>
+        <T.Label $show={isShowOptions}>
+          {currentValue}
+          <ArrowDownIcon color={theme.colors.gray[900]} />
+        </T.Label>
         <T.Options $show={isShowOptions}>
           {optionData.map((data) => (
             <T.Option
@@ -55,7 +61,7 @@ function Dropdown({ width = "100%" }) {
   );
 }
 
-function InputField({ width = "100%" }) {
+function InputField({ width = "100%", placeholder = "placeholder" }) {
   const [error, setError] = useState(false);
   const [value, setValue] = useState("");
 
@@ -72,7 +78,7 @@ function InputField({ width = "100%" }) {
     <>
       <T.Input
         width={width}
-        placeholder="Placeholder"
+        placeholder={placeholder}
         value={value}
         onChange={handleChange}
         onBlur={handleBlur}

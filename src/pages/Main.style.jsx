@@ -4,77 +4,82 @@ export const Wrapper = styled.div`
     width: ${(props) => props.width || '100%'};
     height: ${(props) => props.height || 'auto'};
     
-    &.main-wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    &.main-wrapper, &.section-wrap {
+        ${({ theme }) => theme.flexLayout("column", "initial")};
     }
 
     &.section-wrap {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
         gap: 30px;
         margin: 0 auto;
         margin-top: 60px;
-        border: 1px solid red;
+    }
+
+    &.txt-box-01, &.txt-box-02, &.txt-area {
+        ${({ theme }) => theme.flexLayout("column", "initial", "initial")};
+    }
+
+    &.txt-box-01, &.txt-box-02 {
+        gap: 16px;
+    }
+
+    &.txt-area {
+        gap: 8px;
     }
 
     &.txt-box-01 {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
         width: 324px;
         margin-left: 60px;
     }
 
     &.txt-box-02 {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        width: 324px;
+        width: 348px;
     }
 
-    &.txt-area {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
+    &.img-box, &.buttonWrapper {
+        ${({ theme }) => theme.flexLayout};
+    }
+
+    &.img-box {
+        width: 720px;
+        height: 204px;
+    }
+
+    &.fixed-right-img-box {
+        margin-left: auto;
     }
 
     &.buttonWrapper {
-        display: flex;
-        justify-content: center;
-        align-items: center;
         margin-top: 24px;
     }
 `;
 
 export const Content = styled.div`
-    width: ${(props) => props.width || '100%'};
-    height: ${(props) => props.height || 'auto'};
 
     &.section {
         display: flex;
         width: 1200px;
         height: 324px;
-        border: 1px solid blue;
         border-radius: 16px;
         background-color: #F6F8FF;
         padding-top: 60px;
     }
 
     &.reverse-section {
-        flex-direction: row-reverse;
+        ${({ theme }) => theme.flexLayout("row-reverse", "flex-end", "initial")}
     }
 
-    &.img {
-        width: 720px;
+    &.img-01 {
+        width: 640px;
+        height: 172px;
+        background-image: url('/src/assets/mainImg01.png');
+        background-size: cover;
+    }
+
+    &.img-02 {
+        width: 470px;
         height: 204px;
-        border: 1px solid yellow;
-    }
-
-    &.sample01 {
-        margin-left: auto;
+        background-image: url('/src/assets/mainImg02.png');
+        background-size: cover;
     }
 `;
 
@@ -86,9 +91,7 @@ export const Line = styled.div`
 `;
 
 export const Label = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    ${({ theme }) => theme.flexLayout}
     width: 80px;
     height: 32px;
     border-radius: 50px;

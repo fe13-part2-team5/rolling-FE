@@ -1,4 +1,4 @@
-import PrimaryButtonWrapper from "./PrimaryButton.style";
+ import PrimaryButtonWrapper from "./PrimaryButton.style";
 
 function PrimaryButton({ width, height, onClick, $disable, children }) {
 

@@ -1,9 +1,7 @@
 import styled from "styled-components";
 
 export const ProfileCircle = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${({ theme }) => theme.flexLayout()}
   width: 80px;
   height: 80px;
   background-color: ${({ theme }) => theme.colors.gray[300]};
@@ -11,8 +9,7 @@ export const ProfileCircle = styled.div`
 `;
 
 export const ProfileBox = styled.div`
-  display: flex;
-  align-items: center;
+  ${({ theme }) => theme.flexLayout(undefined, "flex-start", undefined)}
   width: 197px;
   height: 65px;
   background-color: ${({ theme }) => theme.colors.gray[300]};

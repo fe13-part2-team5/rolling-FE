@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 // Common TextField Styles
-const commonTextfieldStyles = css`
+export const commonTextfieldStyles = css`
   width: ${({ width }) => width};
   height: 50px;
   margin: 0;
@@ -24,7 +24,7 @@ const commonTextfieldStyles = css`
     `}
 `;
 
-const textfieldStateStyles = css`
+export const textfieldStateStyles = css`
   &:focus {
     outline: none;
     border: 2px solid ${({ theme }) => theme.colors.gray[500]};
@@ -50,43 +50,32 @@ const textfieldStateStyles = css`
   }
 `;
 
-const ErrorMessage = styled.span`
+export const ErrorMessage = styled.span`
   display: block;
   color: ${({ theme }) => theme.colors.error};
-  font-size: ${({ theme }) => theme.fonts["12r"].fontSize};
-  font-weight: ${({ theme }) => theme.fonts["12r"].fontWeight};
-  line-height: ${({ theme }) => theme.fonts["12r"].lineHeight};
+  ${({ theme }) => theme.fonts["12r"]};
 `;
 
 // InputField
-const Input = styled.input`
+export const Input = styled.input`
   ${commonTextfieldStyles}
   ${textfieldStateStyles}
 `;
 
 // Dropdown
-const SelectBox = styled.div`
+export const SelectBox = styled.div`
   ${commonTextfieldStyles}
   position: relative;
   padding: 0;
   border: none;
   cursor: pointer;
-
-  /* 임시 아이콘 */
-  &::before {
-    content: "⌵";
-    position: absolute;
-    top: 5px;
-    bottom: 0;
-    right: 18px;
-    font-size: 20px;
-  }
 `;
 
-const Label = styled.label`
+export const Label = styled.label`
   ${commonTextfieldStyles}
   ${textfieldStateStyles}
-  display: block;
+    ${({ theme }) => theme.flexLayout(undefined, "flex-start")}
+    gap: 246px;
   cursor: pointer;
   border: ${(props) =>
     props.$show
@@ -102,19 +91,20 @@ const Label = styled.label`
   }
 `;
 
-const Options = styled.ul`
+export const Options = styled.ul`
   max-height: ${(props) => (props.$show ? "none" : "0")};
   margin-top: 8px;
   padding: 0;
   border: ${(props) =>
     props.$show ? `1px solid ${props.theme.colors.gray[300]}` : "none"};
   border-radius: 8px;
+  background-color: ${({ theme }) => theme.colors.white};
   box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   list-style: none;
 `;
 
-const Option = styled.li`
+export const Option = styled.li`
   padding: 12px 16px;
   &:first-child {
     margin-top: 10px;
@@ -128,5 +118,3 @@ const Option = styled.li`
     background-color: ${({ theme }) => theme.colors.gray[100]};
   }
 `;
-
-export { Input, ErrorMessage, SelectBox, Label, Options, Option };

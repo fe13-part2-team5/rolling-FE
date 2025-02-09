@@ -10,7 +10,9 @@ export const Main = styled.main`
   background: ${({ $backgroundColor, $backgroundImageURL, theme }) =>
     $backgroundImageURL
       ? `no-repeat url(${$backgroundImageURL}) center fixed`
-      : theme.colors[$backgroundColor][200]};
+      : $backgroundColor
+        ? theme.colors[$backgroundColor][200]
+        : theme.colors.white};
   background-size: cover;
 `;
 

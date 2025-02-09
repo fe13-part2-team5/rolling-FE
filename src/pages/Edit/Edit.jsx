@@ -3,17 +3,16 @@ import HeaderService from "../../components/HeaderService/HeaderService";
 import MessageCard from "../../components/Card/MessageCard";
 import PrimaryButton from "../../components/Buttons/PrimaryButton";
 import * as E from "./Edit.style";
-import { useNavigate, useParams } from "react-router-dom";
-import { deleteRecipient } from "../../api/Recipients";
-import { useState, useEffect, useRef, useCallback } from "react";
+import { getRecipient, deleteRecipient } from "../../api/Recipients";
 import { getMessages, deleteMessage } from "../../api/Messages";
+import { useNavigate, useParams } from "react-router-dom";
+import { useState, useEffect, useRef, useCallback } from "react";
 
-function Edit({
-  backgroundColor = "beige",
-  backgroundImageURL = "https://picsum.photos/id/683/3840/2160",
-}) {
+function Edit() {
   const navigate = useNavigate();
   const { id } = useParams();
+  const [backgroundColor, setBackgroundColor] = useState(null);
+  const [backgroundImageURL, setBackgroundImageURL] = useState(null);
   const [messages, setMessages] = useState([]);
   const [next, setNext] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -36,6 +35,15 @@ function Edit({
   };
 
   useEffect(() => {
+    const fetchBackgrounds = async () => {
+      const response = await getRecipient(id);
+      if (response.success) {
+        const data = response.data;
+        setBackgroundColor(data.backgroundColor);
+        setBackgroundImageURL(data.backgroundImageURL);
+      }
+    };
+
     const fetchMessages = async () => {
       const response = await getMessages(id);
 
@@ -45,10 +53,10 @@ function Edit({
         const newNext = data.next;
         setMessages(newMessages);
         setNext(newNext);
-        console.log(next);
       }
     };
 
+    fetchBackgrounds();
     fetchMessages();
   }, [id]);
 

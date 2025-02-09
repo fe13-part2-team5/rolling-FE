@@ -25,8 +25,6 @@ function PostCreate() {
     setIsToggled(!isToggled);
   };
 
-  console.log(name);
-
   return (
     <P.Wrapper>
       <HeaderLogoOnly />

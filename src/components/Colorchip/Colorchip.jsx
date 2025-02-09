@@ -3,7 +3,7 @@ import * as C from "./Colorchip.style";
 import { CompletedIcon } from "../Icons";
 import { useTheme } from "styled-components";
 
-function Colorchip({ isImage, images }) {
+function Colorchip({ isImage, images, onSelect }) {
   const colors = ["beige", "purple", "blue", "green"];
 
   const [selectedColor, setSelectedColor] = useState(colors[0]);
@@ -25,8 +25,10 @@ function Colorchip({ isImage, images }) {
   const handleBackgroundSelect = (item, index) => {
     if (isImage) {
       setSelectedImage(images[index]);
+      onSelect(images[index]); // 선택된 이미지 부모로 전달
     } else {
       setSelectedColor(item);
+      onSelect(item); // 선택된 색상 부모로 전달
     }
   };
 

@@ -12,6 +12,7 @@ function PostCreate() {
   const [images, setImages] = useState([]);
   const [isToggled, setIsToggled] = useState(false);
   const [name, setName] = useState("");
+  const [selectedBackground, setSelectedBackground] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -38,17 +39,34 @@ function PostCreate() {
     getBackgroundImage();
   }, []);
 
-  const isButtonDisabled = !name.trim();
+  const isButtonDisabled = !name.trim() || !selectedBackground;
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!isButtonDisabled) {
-      const id = Math.random().toString(36).substr(2, 9);
-      navigate(`/post/${id}`);
+      const newPostData = {
+        name: name,
+        backgroundColor: selectedBackground,
+      };
+
+      try {
+        const response = await axios.post(
+          "https://rolling-api.vercel.app/13-5/recipients/",
+          newPostData
+        );
+        const postId = response.data.id;
+        navigate(`/post/${postId}`);
+      } catch (error) {
+        console.error("POST 요청 실패:", error);
+      }
     }
   };
 
   const handleToggle = () => {
     setIsToggled(!isToggled);
+  };
+
+  const handleBackgroundSelect = (selected) => {
+    setSelectedBackground(selected);
   };
 
   return (
@@ -80,7 +98,11 @@ function PostCreate() {
           </P.StyledToggleButton>
 
           {/* Colorchip 컴포넌트 수정 - 이미지 */}
-          <Colorchip isImage={isToggled} images={images} />
+          <Colorchip
+            isImage={isToggled}
+            images={images}
+            onSelect={handleBackgroundSelect}
+          />
         </P.Section>
         <PrimaryButton
           width="100%"

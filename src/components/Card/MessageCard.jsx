@@ -4,7 +4,6 @@ import {
   MessageProfileIcon,
   SenderFont,
   SenderBoldText,
-  RelationshipBadge,
   MessageContainer,
   MessageFont,
   MessageDateFont,
@@ -15,6 +14,7 @@ import { RelBadge } from "../Badge/Badge";
 
 function MessageCard({
   recipientId,
+  id,
   profileImageURL,
   sender,
   relationship,

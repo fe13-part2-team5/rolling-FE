@@ -43,6 +43,10 @@ export const MessageProfileIcon = styled.div`
 export const SenderFont = styled.h3`
   ${(props) => props.theme.fonts["20r"]}
   color: #000000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 220px;
 `;
 
 export const SenderBoldText = styled.span`

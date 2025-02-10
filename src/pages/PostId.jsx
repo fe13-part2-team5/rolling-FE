@@ -19,69 +19,69 @@ function PostId() {
   const [isReady, setIsReady] = useState(false);
   const [hasMore, setHasMore] = useState(true);
   const [totalCount, setTotalCount] = useState(null);
+  const [isFetching, setIsFetching] = useState(false);
   const PAGE_SIZE_INITIAL = 5;
   const PAGE_SIZE_MORE = 6;
   const { id } = useParams();
 
+  const fetchReactionData = async () => {
+    try {
+      const response = await axios.get(
+        `https://rolling-api.vercel.app/13-5/recipients/${id}/reactions/`
+      );
+      setReaction(response.data.results || []);
+    } catch (error) {
+      console.error("대상 리액션 정보 조회 오류:", error);
+    }
+  };
+
+  const fetchRecipientData = async () => {
+    try {
+      const response = await axios.get(
+        `https://rolling-api.vercel.app/13-5/recipients/${id}/`
+      );
+      setRecipient(response.data);
+      setbackgroundImageURL(response.data.backgroundImageURL);
+      setBackgroundColor(response.data.backgroundColor);
+    } catch (error) {
+      console.error("대상 정보 조회 오류:", error);
+    }
+  };
+
+  const fetchInitialMessages = async () => {
+    try {
+      const response = await axios.get(
+        `https://rolling-api.vercel.app/13-5/recipients/${id}/messages/`,
+        { params: { limit: PAGE_SIZE_INITIAL, offset: 0 } }
+      );
+
+      setMessages(response.data.results);
+
+      if (typeof response.data.count === "number") {
+        setTotalCount(response.data.count);
+      }
+    } catch (error) {
+      console.error("초기 메시지 조회 오류:", error);
+      setMessages(messageData);
+    }
+  };
+
+  const fetchData = async () => {
+    await Promise.all([
+      fetchRecipientData(),
+      fetchInitialMessages(),
+      fetchReactionData(),
+    ]);
+    setIsReady(true);
+  };
+
   useEffect(() => {
-    const fetchRecipientData = async () => {
-      try {
-        const response = await axios.get(
-          `https://rolling-api.vercel.app/13-5/recipients/${id}/`
-        );
-        setRecipient(response.data);
-        setbackgroundImageURL(response.data.backgroundImageURL);
-        setBackgroundColor(response.data.backgroundColor);
-      } catch (error) {
-        console.error("대상 정보 조회 오류:", error);
-      }
-    };
-
-    const fetchInitialMessages = async () => {
-      try {
-        const response = await axios.get(
-          `https://rolling-api.vercel.app/13-5/recipients/${id}/messages/`,
-          { params: { limit: PAGE_SIZE_INITIAL, offset: 0 } }
-        );
-
-        setMessages(response.data.results);
-
-        if (typeof response.data.count === "number") {
-          setTotalCount(response.data.count);
-        }
-      } catch (error) {
-        console.error("초기 메시지 조회 오류:", error);
-        setMessages(messageData);
-      }
-    };
-
-    const fetchReactionData = async () => {
-      try {
-        const response = await axios.get(
-          `https://rolling-api.vercel.app/13-5/recipients/${id}/reactions/`
-        );
-        setReaction(response.data.results || []);
-      } catch (error) {
-        console.error("대상 리액션 정보 조회 오류:", error);
-      }
-    };
-
-    const fetchData = async () => {
-      await Promise.all([
-        fetchRecipientData(),
-        fetchInitialMessages(),
-        fetchReactionData(),
-      ]);
-      setIsReady(true);
-    };
-
     fetchData();
   }, [id]);
 
   const fetchMoreMessages = async () => {
-    if (!hasMore || totalCount === null) {
-      return;
-    }
+    if (isFetching || !hasMore || totalCount === null) return;
+    setIsFetching(true);
 
     const offset = messages.length;
     const remainingItems = Math.max(0, totalCount - offset);
@@ -89,6 +89,7 @@ function PostId() {
 
     if (fetchLimit <= 0) {
       setHasMore(false);
+      setIsFetching(false);
       return;
     }
 
@@ -117,12 +118,14 @@ function PostId() {
     } catch (error) {
       console.error("추가 메시지 조회 오류:", error);
       setHasMore(false);
+    } finally {
+      setTimeout(() => setIsFetching(false), 1000);
     }
   };
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!hasMore) return;
+      if (!hasMore || isFetching) return;
 
       const scrollTop =
         document.documentElement.scrollTop || document.body.scrollTop;
@@ -135,9 +138,10 @@ function PostId() {
         fetchMoreMessages();
       }
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [hasMore, totalCount, messages.length]);
+  }, [hasMore, totalCount, messages.length, isFetching]);
 
   const handleOpenModal = (message) => {
     setSelectedMessage(message);
@@ -150,26 +154,32 @@ function PostId() {
   if (!isReady) return null;
 
   return (
-    <Box bgColor={backgroundColor} bgImage={backgroundImageURL}>
+    <>
       <HeaderLogoOnly />
-      <HeaderService recipient={recipient} reaction={reaction} />
-      <MessageCardBox messageCount={messages.length}>
-        <PlusBox to="/Post/{id}/Message">
-          <CreateButton />
-        </PlusBox>
-        {messages.map((message, index) => (
-          <MessageCard
-            key={index}
-            {...message}
-            onClick={() => handleOpenModal(message)}
-          />
-        ))}
-      </MessageCardBox>
+      <HeaderService
+        recipient={recipient}
+        reaction={reaction}
+        updateReactions={fetchReactionData}
+      />
+      <Box bgColor={backgroundColor} bgImage={backgroundImageURL}>
+        <MessageCardBox messageCount={messages.length}>
+          <PlusBox to="/Post/{id}/Message">
+            <CreateButton />
+          </PlusBox>
+          {messages.map((message, index) => (
+            <MessageCard
+              key={index}
+              {...message}
+              onClick={() => handleOpenModal(message)}
+            />
+          ))}
+        </MessageCardBox>
 
-      {selectedMessage && (
-        <Modal message={selectedMessage} handleClose={handleCloseModal} />
-      )}
-    </Box>
+        {selectedMessage && (
+          <Modal message={selectedMessage} handleClose={handleCloseModal} />
+        )}
+      </Box>
+    </>
   );
 }
 

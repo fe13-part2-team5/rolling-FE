@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const ColorButton = styled.button`
+    ${({ theme }) => theme.flexLayout}
     width: ${(props) => props.width || '122px'};
     height: ${(props) => props.height || '40px'};
     border-radius: 6px;
@@ -8,13 +9,11 @@ export const ColorButton = styled.button`
     line-height: 26px;
 
     ${(props) => props.$isToggled ?
-        `padding: 8px 16px;
-        background-color: #F6F6F6;
+        `background-color: #F6F6F6;
         border: 0;
         color: #181818;
         font-weight: 400;` :
-        `padding: 7px 16px;
-        background-color: #FFFFFF;
+        `background-color: #FFFFFF;
         border:2px solid #9935FF;
         color: #861DEE;
         font-weight: 700;`};
@@ -25,6 +24,7 @@ export const ColorButton = styled.button`
 `;
 
 export const ImgButton = styled.button`
+    ${({ theme }) => theme.flexLayout}
     width: ${(props) => props.width || '122px'};
     height: ${(props) => props.height || '40px'};
     border-radius: 6px;
@@ -33,13 +33,11 @@ export const ImgButton = styled.button`
     background-color: #CCCCCC;
 
     ${(props) => props.$isToggled ?
-        `padding: 7px 16px;
-        background-color: #FFFFFF;
+        `background-color: #FFFFFF;
         border:2px solid #9935FF;
         color: #861DEE;
         font-weight: 700;` :
-        `padding: 8px 16px;
-        background-color: #F6F6F6;
+        `background-color: #F6F6F6;
         border: 0;
         color: #181818;
         font-weight: 400;`};

@@ -5,7 +5,7 @@ import ProfileImages from "./ProfileImages";
 import AddEmoji from "./AddEmoji";
 import * as H from "./HeaderService.style";
 
-function HeaderService({ recipient, reaction }) {
+function HeaderService({ recipient, reaction, updateReactions = () => {} }) {
   if (!recipient) return null;
 
   return (
@@ -22,7 +22,7 @@ function HeaderService({ recipient, reaction }) {
           <H.Section>
             <Reaction reactions={reaction} />
             <H.MiniSection>
-              <AddEmoji />
+              <AddEmoji updateReactions={updateReactions} />
               <H.Line />
               <ShareButton />
             </H.MiniSection>

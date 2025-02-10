@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ShareIcon } from "../Icons";
-import * as S from "./ShareButton.style";
+import * as G from "./GlobalStyle";
 import { useContext } from "react";
 import { ToastContext } from "../../context/ToastContext";
 
@@ -24,19 +24,19 @@ function ShareButton() {
 
   return (
     <>
-      <S.Button onClick={toggleShareMenu}>
+      <G.ShareButton onClick={toggleShareMenu}>
         <ShareIcon />
-      </S.Button>
+      </G.ShareButton>
 
       {isOpen && (
         <>
-          <S.Overlay onClick={toggleShareMenu} />
-          <S.ShareMenuWrapper>
-            <S.ShareOptions>
+          <G.Overlay onClick={toggleShareMenu} />
+          <G.ShareMenuWrapper>
+            <G.ShareOptions>
               <button>카카오톡 공유</button>
               <button onClick={handleCopyUrl}>URL 공유</button>
-            </S.ShareOptions>
-          </S.ShareMenuWrapper>
+            </G.ShareOptions>
+          </G.ShareMenuWrapper>
         </>
       )}
     </>

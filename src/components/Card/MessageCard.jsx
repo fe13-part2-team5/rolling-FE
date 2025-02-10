@@ -1,3 +1,4 @@
+import parse from "html-react-parser";
 import {
   MessageCardContainer,
   SenderContainer,
@@ -51,7 +52,7 @@ function MessageCard({
         </DeleteContainer>
       </SenderContainer>
       <MessageContainer>
-        <MessageFont>{content}</MessageFont>
+        <MessageFont>{parse(content)}</MessageFont>
       </MessageContainer>
       <MessageDateFont>{formatDate(createdAt)}</MessageDateFont>
     </MessageCardContainer>

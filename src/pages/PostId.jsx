@@ -163,7 +163,7 @@ function PostId() {
       />
       <Box bgColor={backgroundColor} bgImage={backgroundImageURL}>
         <MessageCardBox messageCount={messages.length}>
-          <PlusBox to="/Post/{id}/Message">
+          <PlusBox to={`/Post/${id}/Message`}>
             <CreateButton />
           </PlusBox>
           {messages.map((message, index) => (

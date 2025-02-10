@@ -33,7 +33,7 @@ function List() {
     const fetchCards = async () => {
       try {
         const response = await axios.get(
-          "https://rolling-api.vercel.app/13-5/recipients/"
+          "https://rolling-api.vercel.app/13-5/recipients/?limit=100"
         );
         setCards(response.data.results || []);
       } catch (error) {
@@ -86,56 +86,63 @@ function List() {
     <div>
       <Header />
       <L.Divider />
-      <L.ListTitleText>인기 롤링 페이퍼🔥</L.ListTitleText>
-      <L.CardSlider>
-        <L.CardContainer>
-          {PopularCards.length > cardsPerPage && popularIndex > 0 && (
-            <L.ArrowButtonWrapper className="left">
-              <ArrowButton
-                direction="left"
-                onClick={() => handlePrev("popular")}
-              />
-            </L.ArrowButtonWrapper>
-          )}
 
-          <ListCard cards={visiblePopularCards} />
+      <L.ListWrapper>
+        <L.ListTitleText>인기 롤링 페이퍼🔥</L.ListTitleText>
 
-          {PopularCards.length > cardsPerPage &&
-            popularIndex + cardsPerPage < PopularCards.length && (
-              <L.ArrowButtonWrapper className="right">
+        <L.CardSlider>
+          <L.CardContainer>
+            {PopularCards.length > cardsPerPage && popularIndex > 0 && (
+              <L.ArrowButtonWrapper className="left">
                 <ArrowButton
-                  direction="right"
-                  onClick={() => handleNext("popular")}
+                  direction="left"
+                  onClick={() => handlePrev("popular")}
                 />
               </L.ArrowButtonWrapper>
             )}
-        </L.CardContainer>
-      </L.CardSlider>
 
-      <L.ListTitleText>최근에 만든 롤링 페이퍼⭐</L.ListTitleText>
-      <L.CardSlider>
-        <L.CardContainer>
-          {recentIndex > 0 && (
-            <L.ArrowButtonWrapper className="left">
-              <ArrowButton
-                direction="left"
-                onClick={() => handlePrev("recent")}
-              />
-            </L.ArrowButtonWrapper>
-          )}
+            <ListCard cards={visiblePopularCards} />
 
-          <ListCard cards={visibleRecentCards} />
+            {PopularCards.length > cardsPerPage &&
+              popularIndex + cardsPerPage < PopularCards.length && (
+                <L.ArrowButtonWrapper className="right">
+                  <ArrowButton
+                    direction="right"
+                    onClick={() => handleNext("popular")}
+                  />
+                </L.ArrowButtonWrapper>
+              )}
+          </L.CardContainer>
+        </L.CardSlider>
+      </L.ListWrapper>
 
-          {recentIndex + cardsPerPage < RecentCards.length && (
-            <L.ArrowButtonWrapper className="right">
-              <ArrowButton
-                direction="right"
-                onClick={() => handleNext("recent")}
-              />
-            </L.ArrowButtonWrapper>
-          )}
-        </L.CardContainer>
-      </L.CardSlider>
+      <L.ListWrapper>
+        <L.ListTitleText>최근에 만든 롤링 페이퍼⭐</L.ListTitleText>
+        <L.CardSlider>
+          <L.CardContainer>
+            {recentIndex > 0 && (
+              <L.ArrowButtonWrapper className="left">
+                <ArrowButton
+                  direction="left"
+                  onClick={() => handlePrev("recent")}
+                />
+              </L.ArrowButtonWrapper>
+            )}
+
+            <ListCard cards={visibleRecentCards} />
+
+            {recentIndex + cardsPerPage < RecentCards.length && (
+              <L.ArrowButtonWrapper className="right">
+                <ArrowButton
+                  direction="right"
+                  onClick={() => handleNext("recent")}
+                />
+              </L.ArrowButtonWrapper>
+            )}
+          </L.CardContainer>
+        </L.CardSlider>
+      </L.ListWrapper>
+
       <L.PostButtonWrapper>
         <PrimaryButton width="280px" height="56px" onClick={handleCreatePost}>
           나도 만들어보기

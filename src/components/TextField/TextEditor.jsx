@@ -7,7 +7,7 @@ function TextEditor({ content, setContent }) {
       onChange={setContent}
       modules={{
         toolbar: [
-          [{ header: [1, 2, 3, false] }],
+          [{ header: [1, 2, false] }],
           ["bold", "italic", "underline", "strike"],
           [{ color: [] }, { background: [] }],
           [{ align: [] }],

@@ -36,7 +36,7 @@ function RelBadge({ value = Object.keys(badgeStyles)[0] }) {
   );
 }
 
-function EmojiBadge({ emoji = "😍", count = 0 }) {
+function EmojiBadge({ emoji, count }) {
   return (
     <B.EmojiBadgeContainer>
       <B.Emoji>{emoji}</B.Emoji>

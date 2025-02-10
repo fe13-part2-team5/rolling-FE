@@ -64,8 +64,11 @@ export const StyledToggleButton = styled.div`
 // PostMessage Page
 
 export const ProfileList = styled.div`
+  ${({ theme }) => theme.flexLayout()}
   width: 56px;
   height: 56px;
   border-radius: 56px;
-  background-color: black; // 임시 색상 (이미지 대체)
+  overflow: hidden;
+  border: ${(props) => (props.$isSelected ? "2px solid #000" : "none")};
+  cursor: pointer;
 `;

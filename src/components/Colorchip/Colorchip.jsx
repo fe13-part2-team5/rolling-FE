@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import * as C from "./Colorchip.style";
 import { CompletedIcon } from "../Icons";
 import { useTheme } from "styled-components";
@@ -32,7 +31,6 @@ function Colorchip({ isImage, onSelect }) {
         console.error("이미지 로드 실패:", error);
       }
     };
-
     fetchImages();
   }, []);
 

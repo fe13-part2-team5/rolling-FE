@@ -75,6 +75,18 @@ export const theme = {
       fontWeight: 400,
       lineHeight: "36px",
     },
+    "22b": {
+      fontFamily: "Pretendard",
+      fontSize: "22px",
+      fontWeight: 700,
+      lineHeight: "32px",
+    },
+    "22r": {
+      fontFamily: "Pretendard",
+      fontSize: "22px",
+      fontWeight: 400,
+      lineHeight: "32px",
+    },
     "20b": {
       fontFamily: "Pretendard",
       fontSize: "20px",

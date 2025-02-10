@@ -1,8 +1,17 @@
 import styled from "styled-components";
 
+const ListWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: fit-content;
+  margin: 50px auto;
+  position: relative;
+`;
+
 const ListTitleText = styled.h3`
   ${(props) => props.theme.fonts["24b"]};
-  margin: 50px 0 15px 380px;
+  margin-bottom: 15px;
   color: #000000;
   letter-spacing: -1%;
 `;
@@ -15,14 +24,13 @@ const PostButtonWrapper = styled.div`
 `;
 
 const CardSlider = styled.div`
-  position: relative;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
   width: 100%;
   margin: 0 auto;
-  gap: 10px;
+  gap: 20px;
 `;
 
 const CardContainer = styled.div`
@@ -61,4 +69,5 @@ export {
   CardSlider,
   CardContainer,
   Divider,
+  ListWrapper,
 };

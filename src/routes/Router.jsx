@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Main from "../pages/main";
+import Main from "../pages/Main";
 import PostEdit from "../pages/PostEdit/PostEdit";
 import PostCreate from "../pages/PostCreate";
 import PostId from "../pages/PostId";
-import List from "../pages/list";
+import List from "../pages/List";
 import MessageWrite from "../pages/MessageWrite";
 
 function Router() {

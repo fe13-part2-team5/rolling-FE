@@ -71,12 +71,39 @@ export const Wrapper = styled.div`
         &.txt-box-01, &.txt-box-02 {
             margin-left: 0;
             border-left: 40px solid ${({ theme }) => theme.colors.surface};
+            border-right: 40px solid ${({ theme }) => theme.colors.surface};
         }
 
         &.img-box {
             width: 100%;
             height: height: 100%;
             padding: 16px 28px;
+        }
+    }
+
+    @media (max-width: 360px) {
+        &.section-wrap {
+            gap: 24px;
+            margin-top: 42px;
+            padding: 0 20px;
+        }
+
+        &.txt-box-01, &.txt-box-02 {
+            border-left: 24px solid ${({ theme }) => theme.colors.surface};
+            border-right: 24px solid ${({ theme }) => theme.colors.surface};
+        }
+
+        &.txt-area {
+            gap: 4px;
+        }
+
+        &.buttonWrapper {
+            margin-top: 37px;
+            padding: 24px 20px;
+        }
+
+        &.img-box {
+            padding: 0;
         }
     }
 `;
@@ -87,9 +114,9 @@ export const Content = styled.div`
         display: flex;
         width: 1200px;
         height: 324px;
+        padding-top: 60px;
         border-radius: 16px;
         background-color: ${({ theme }) => theme.colors.surface};
-        padding-top: 60px;
     }
 
     &.reverse-section {
@@ -122,6 +149,34 @@ export const Content = styled.div`
         &.img-01 {
             width: 100%;
             height: 100%;
+            background-position: center;
+        }
+
+        &.img-02 {
+            background-position: center;
+        }
+    }
+
+    @media (max-width: 360px) {
+        &.section {
+            gap: 50px;
+            height: 352px;
+            padding: 0;
+            padding-top: 24px;
+            border-radius: 20px;
+        }
+
+        &.reverse-section {
+            gap: 48px;
+        }
+
+        &.img-01 {
+            height: 90px;
+        }
+
+        &.img-02 {
+            width: 261px;
+            height: 113px;
         }
     }
 `;
@@ -148,15 +203,35 @@ export const H2 = styled.h2`
     color: ${({ theme }) => theme.colors.gray[900]};
 
     @media (max-width: 768px) {
+        word-break: keep-all;
+
         br {
             display: none;
         }
+        
+        &.txt-box-02-h2 {
+            br {
+                display: block;
+            }
+        }
+    }
+
+    @media (max-width: 360px) {
+        ${({ theme }) => theme.fonts['18b']}
     }
 `;
 
 export const P = styled.p`
     ${({ theme }) => theme.fonts['18r']}
     color: ${({ theme }) => theme.colors.gray[500]};
+
+    @media (max-width: 768px) {
+        word-break: keep-all;
+    }
+
+    @media (max-width: 360px) {
+        ${({ theme }) => theme.fonts['15r']}
+    }
 `;
 
 export const MoveListButton = styled(PrimaryButtonWrapper)`

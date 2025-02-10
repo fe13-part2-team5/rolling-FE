@@ -3,17 +3,22 @@ import HeaderService from "../../components/HeaderService/HeaderService";
 import MessageCard from "../../components/Card/MessageCard";
 import PrimaryButton from "../../components/Buttons/PrimaryButton";
 import * as E from "./PostEdit.style";
+import { ToastContext } from "../../context/ToastContext";
 import { getRecipient, deleteRecipient } from "../../api/Recipients";
+import { getReactions } from "../../api/Reactions";
 import { getMessages, deleteMessage } from "../../api/Messages";
 import { useNavigate, useParams } from "react-router-dom";
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, useContext } from "react";
 
 function PostEdit() {
   const navigate = useNavigate();
   const { id } = useParams();
   const observerRef = useRef(null);
+  const { addToast } = useContext(ToastContext);
+  const [recipient, setRecipient] = useState(null);
   const [backgroundColor, setBackgroundColor] = useState(null);
   const [backgroundImageURL, setBackgroundImageURL] = useState(null);
+  const [reactions, setReactions] = useState([]);
   const [messages, setMessages] = useState([]);
   const [next, setNext] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -21,6 +26,7 @@ function PostEdit() {
   const handleDeleteRecipient = async () => {
     const response = await deleteRecipient(id);
     if (response.success) {
+      addToast("롤링 페이퍼가 삭제되었습니다.");
       navigate("/list");
     }
   };
@@ -31,16 +37,26 @@ function PostEdit() {
       setMessages((prevMessages) =>
         prevMessages.filter((message) => message.id !== messageId)
       );
+      addToast("메시지가 삭제되었습니다.");
     }
   };
 
   useEffect(() => {
-    const fetchBackgrounds = async () => {
+    const fetchRecipient = async () => {
       const response = await getRecipient(id);
       if (response.success) {
         const data = response.data;
+        setRecipient(data);
         setBackgroundColor(data.backgroundColor);
         setBackgroundImageURL(data.backgroundImageURL);
+      }
+    };
+
+    const fetchReactions = async () => {
+      const response = await getReactions(id);
+      if (response.success) {
+        const data = response.data;
+        setReactions(data.results);
       }
     };
 
@@ -56,7 +72,8 @@ function PostEdit() {
       }
     };
 
-    fetchBackgrounds();
+    fetchRecipient();
+    fetchReactions();
     fetchMessages();
   }, [id]);
 
@@ -70,6 +87,7 @@ function PostEdit() {
       setMessages((prevMessages) => [...prevMessages, ...data.results]);
       setNext(data.next);
     }
+
     setLoading(false);
   }, [next, id]);
 
@@ -93,7 +111,7 @@ function PostEdit() {
   return (
     <>
       <Header />
-      <HeaderService />
+      <HeaderService recipient={recipient} reaction={reactions} />
       <E.Main
         $backgroundColor={backgroundColor}
         $backgroundImageURL={backgroundImageURL}

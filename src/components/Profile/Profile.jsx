@@ -1,10 +1,14 @@
 import { PersonIcon } from "../Icons";
 import * as P from "./Profile.style";
 
-function Profile() {
+function Profile({ image }) {
   return (
     <P.ProfileCircle>
-      <PersonIcon height={32} color={"white"} />
+      {image ? (
+        <img src={image} alt="profile" />
+      ) : (
+        <PersonIcon height={32} color={"white"} />
+      )}
     </P.ProfileCircle>
   );
 }

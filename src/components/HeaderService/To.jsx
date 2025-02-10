@@ -1,7 +1,7 @@
-import * as T from "./To.style";
+import * as G from "./GlobalStyle";
 
 function To({ name }) {
-  return <T.ToName>To. {name}</T.ToName>;
+  return <G.ToName>To. {name}</G.ToName>;
 }
 
 export default To;

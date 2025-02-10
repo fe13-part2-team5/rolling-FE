@@ -40,7 +40,7 @@ function Main() {
           <Wrapper className="txt-box-02">
             <Label>Point. 02</Label>
             <Wrapper className="txt-area">
-              <H2>
+              <H2 className="txt-box-02-h2">
                 서로에게 이모지로 감정을 <br />
                 표현해보세요
               </H2>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ArrowDownIcon } from "../Icons";
-import * as R from "./Reaction.style";
+import * as G from "./GlobalStyle";
 import { EmojiBadge } from "../Badge/Badge";
 
 function Reaction({ reactions }) {
@@ -22,19 +22,19 @@ function Reaction({ reactions }) {
 
   return (
     <>
-      <R.ReactionBoxContainer>
+      <G.ReactionBoxContainer>
         {renderReactions(reactions.slice(0, 3))}
-        <R.ArrowButton onClick={toggleEmojiMenu}>
+        <G.ArrowButton onClick={toggleEmojiMenu}>
           <ArrowDownIcon />
-        </R.ArrowButton>
-      </R.ReactionBoxContainer>
+        </G.ArrowButton>
+      </G.ReactionBoxContainer>
 
       {isEmojiOpen && (
         <>
-          <R.Overlay onClick={toggleEmojiMenu} />
-          <R.EmojiMoreWrapper>
-            <R.EmojiList>{renderReactions(reactions)}</R.EmojiList>
-          </R.EmojiMoreWrapper>
+          <G.Overlay onClick={toggleEmojiMenu} />
+          <G.EmojiMoreWrapper>
+            <G.EmojiList>{renderReactions(reactions)}</G.EmojiList>
+          </G.EmojiMoreWrapper>
         </>
       )}
     </>

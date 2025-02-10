@@ -6,6 +6,7 @@ export const ProfileCircle = styled.div`
   height: 80px;
   background-color: ${({ theme }) => theme.colors.gray[300]};
   border-radius: 80px;
+  overflow: hidden;
 `;
 
 export const ProfileBox = styled.div`

@@ -4,12 +4,14 @@ import { Dropdown, InputField } from "../components/TextField/TextField";
 import { Profile } from "../components/Profile/Profile";
 import TextEditor from "../components/TextField/TextEditor";
 import * as P from "./PostAndMessage.style";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function MessageWrite() {
   const [content, setContent] = useState("");
   const [name, setName] = useState("");
+  const [profileImages, setProfileImages] = useState([]);
   const navigate = useNavigate();
 
   const optionDataRel = [
@@ -26,7 +28,35 @@ function MessageWrite() {
     { key: 4, value: "Lato" },
   ];
 
-  const profiles = Array(10).fill(null);
+  // const profiles = Array(10).fill(null);
+
+  useEffect(() => {
+    const preloadImages = (imageUrls) => {
+      imageUrls.forEach((url) => {
+        const img = new Image();
+        img.src = url;
+      });
+    };
+
+    const getProfileImage = async () => {
+      try {
+        const response = await axios.get(
+          "https://rolling-api.vercel.app/profile-images/"
+        );
+        const imageUrls = response.data.imageUrls;
+        setProfileImages(imageUrls);
+        preloadImages(imageUrls);
+
+        // if (!selectedImageURL) {
+        //   setSelectedImageURL(imageUrls[0]);
+        // }
+      } catch (error) {
+        console.error("이미지 로드 실패:", error);
+      }
+    };
+
+    getProfileImage();
+  }, []);
 
   const isButtonDisabled = !(name.trim() && content.trim());
 
@@ -56,8 +86,11 @@ function MessageWrite() {
             <P.Wrapper className="profile-select-wrap">
               <p>프로필 이미지를 선택해주세요!</p>
               <P.Wrapper className="profile-list-wrap">
-                {profiles.map((_, index) => (
-                  <P.ProfileList key={index} />
+                {profileImages.map((image, index) => (
+                  // <P.ProfileList key={index} item={image} />
+                  <P.ProfileList key={index}>
+                    <img src={image} alt={`profile-${index}`} />
+                  </P.ProfileList>
                 ))}
               </P.Wrapper>
             </P.Wrapper>

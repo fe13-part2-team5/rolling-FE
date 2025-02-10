@@ -67,5 +67,4 @@ export const ProfileList = styled.div`
   width: 56px;
   height: 56px;
   border-radius: 56px;
-  background-color: black; // 임시 색상 (이미지 대체)
 `;

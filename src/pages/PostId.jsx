@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import HeaderService from "../components/HeaderService/HeaderService";
 import HeaderLogoOnly from "../components/Header/HeaderLogoOnly";
 import MessageCard from "../components/Card/MessageCard";
 import Modal from "../components/Modal/Modal";
 import { messageData } from "./MessageData";
-import { MessageCardBox, Box, PlusBox } from "./PostId.style";
+import {
+  MessageCardBox,
+  Box,
+  PlusBox,
+  PrimaryButtonWrapper,
+} from "./PostId.style";
 import CreateButton from "../components/Buttons/CreateButton";
+import PrimaryButton from "../components/Buttons/PrimaryButton";
 
 function PostId() {
   const [recipient, setRecipient] = useState(null);
@@ -23,6 +29,11 @@ function PostId() {
   const PAGE_SIZE_INITIAL = 5;
   const PAGE_SIZE_MORE = 6;
   const { id } = useParams();
+  const navigate = useNavigate();
+
+  const handleNavigateToEdit = () => {
+    navigate(`/post/${id}/edit`);
+  };
 
   const fetchReactionData = async () => {
     try {
@@ -162,6 +173,15 @@ function PostId() {
         updateReactions={fetchReactionData}
       />
       <Box bgColor={backgroundColor} bgImage={backgroundImageURL}>
+        <PrimaryButtonWrapper>
+          <PrimaryButton
+            onClick={handleNavigateToEdit}
+            width={"92px"}
+            height={"40px"}
+          >
+            수정하기
+          </PrimaryButton>
+        </PrimaryButtonWrapper>
         <MessageCardBox messageCount={messages.length}>
           <PlusBox to={`/Post/${id}/Message`}>
             <CreateButton />

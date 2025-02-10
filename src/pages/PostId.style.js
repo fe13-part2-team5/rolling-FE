@@ -46,3 +46,9 @@ export const PlusBox = styled(Link)`
   border-radius: 16px;
   box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.14);
 `;
+
+export const PrimaryButtonWrapper = styled.div`
+  position: absolute;
+  top: 62px;
+  left: calc((99vw - 1200px) / 2);
+`;

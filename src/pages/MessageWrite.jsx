@@ -5,7 +5,7 @@ import { Profile } from "../components/Profile/Profile";
 import TextEditor from "../components/TextField/TextEditor";
 import * as P from "./PostAndMessage.style";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 function MessageWrite() {
@@ -13,7 +13,10 @@ function MessageWrite() {
   const [name, setName] = useState("");
   const [profileImages, setProfileImages] = useState([]);
   const [selectedProfile, setSelectedProfile] = useState(null);
+  const [selectedRelationship, setSelectedRelationship] = useState("지인");
+  const [selectedFont, setSelectedFont] = useState("Noto Sans");
   const navigate = useNavigate();
+  const { id } = useParams();
 
   const optionDataRel = [
     { key: 1, value: "지인" },
@@ -28,8 +31,6 @@ function MessageWrite() {
     { key: 3, value: "나눔명조" },
     { key: 4, value: "나눔손글씨 손편지체" },
   ];
-
-  // const profiles = Array(10).fill(null);
 
   useEffect(() => {
     const preloadImages = (imageUrls) => {
@@ -64,16 +65,21 @@ function MessageWrite() {
   const handleSubmit = async () => {
     if (!isButtonDisabled) {
       const newPostData = {
-        name: name,
-        backgroundColor: selectedColor,
-        backgroundImageURL: isToggled ? selectedImageURL : null,
+        sender: name,
+        profileImageURL: selectedProfile,
+        relationship: selectedRelationship,
+        content: content,
+        font: selectedFont,
       };
 
+      console.log("Id:", id);
+      
       try {
         const response = await axios.post(
-          "https://rolling-api.vercel.app/13-5/recipients/{recipientId}/messages/",
+          `https://rolling-api.vercel.app/13-5/recipients/${id}/messages/`,
           newPostData
         );
+
         const postId = response.data.id;
         navigate(`/post/${postId}`);
       } catch (error) {
@@ -115,7 +121,11 @@ function MessageWrite() {
         </P.Section>
         <P.Section className="section">
           <P.SectionTitle>상대와의 관계</P.SectionTitle>
-          <Dropdown width="320px" optionData={optionDataRel} />
+          <Dropdown
+            width="320px"
+            optionData={optionDataRel}
+            onSelect={setSelectedRelationship}
+          />
         </P.Section>
         <P.Section className="">
           <P.SectionTitle>내용을 입력해 주세요</P.SectionTitle>
@@ -123,7 +133,11 @@ function MessageWrite() {
         </P.Section>
         <P.Section className="select-font">
           <P.SectionTitle>폰트 선택</P.SectionTitle>
-          <Dropdown width="320px" optionData={optionDataFonts} />
+          <Dropdown
+            width="320px"
+            optionData={optionDataFonts}
+            onSelect={setSelectedFont}
+          />
         </P.Section>
         <PrimaryButton
           width="100%"

@@ -107,8 +107,6 @@ function PostCreate() {
               $isToggled={isToggled}
             />
           </P.StyledToggleButton>
-
-          {/* Colorchip 컴포넌트 수정 - 이미지 */}
           <Colorchip
             isImage={isToggled}
             images={images}

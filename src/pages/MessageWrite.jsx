@@ -12,6 +12,7 @@ function MessageWrite() {
   const [content, setContent] = useState("");
   const [name, setName] = useState("");
   const [profileImages, setProfileImages] = useState([]);
+  const [selectedProfile, setSelectedProfile] = useState(null);
   const navigate = useNavigate();
 
   const optionDataRel = [
@@ -47,9 +48,9 @@ function MessageWrite() {
         setProfileImages(imageUrls);
         preloadImages(imageUrls);
 
-        // if (!selectedImageURL) {
-        //   setSelectedImageURL(imageUrls[0]);
-        // }
+        if (!selectedProfile) {
+          setSelectedProfile(imageUrls[0]);
+        }
       } catch (error) {
         console.error("이미지 로드 실패:", error);
       }
@@ -82,13 +83,15 @@ function MessageWrite() {
         <P.Section className="profile">
           <P.SectionTitle>프로필 이미지</P.SectionTitle>
           <P.Wrapper className="profile-wrap">
-            <Profile />
+            <Profile image={selectedProfile} />
             <P.Wrapper className="profile-select-wrap">
               <p>프로필 이미지를 선택해주세요!</p>
               <P.Wrapper className="profile-list-wrap">
                 {profileImages.map((image, index) => (
-                  // <P.ProfileList key={index} item={image} />
-                  <P.ProfileList key={index}>
+                  <P.ProfileList
+                    key={index}
+                    onClick={() => setSelectedProfile(image)}
+                  >
                     <img src={image} alt={`profile-${index}`} />
                   </P.ProfileList>
                 ))}

@@ -61,10 +61,24 @@ function MessageWrite() {
 
   const isButtonDisabled = !(name.trim() && content.trim());
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!isButtonDisabled) {
-      const id = Math.random().toString(36).substr(2, 9);
-      navigate(`/post/${id}`);
+      const newPostData = {
+        name: name,
+        backgroundColor: selectedColor,
+        backgroundImageURL: isToggled ? selectedImageURL : null,
+      };
+
+      try {
+        const response = await axios.post(
+          "https://rolling-api.vercel.app/13-5/recipients/{recipientId}/messages/",
+          newPostData
+        );
+        const postId = response.data.id;
+        navigate(`/post/${postId}`);
+      } catch (error) {
+        console.error("POST 요청 실패:", error);
+      }
     }
   };
 

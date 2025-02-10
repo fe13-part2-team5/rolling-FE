@@ -10,7 +10,7 @@ function ShareButton() {
 
   useEffect(() => {
     if (!window.Kakao.isInitialized()) {
-      window.Kakao.init(import.meta.env.VITE_KAKAO_JAVASCRIPT_KEY); // 🔹 카카오 앱 키 입력
+      window.Kakao.init(import.meta.env.VITE_KAKAO_JAVASCRIPT_KEY);
     }
   }, []);
 

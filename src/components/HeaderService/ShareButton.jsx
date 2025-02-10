@@ -8,6 +8,12 @@ function ShareButton() {
   const { addToast } = useContext(ToastContext);
   const [isOpen, setIsOpen] = useState(false);
 
+  useEffect(() => {
+    if (!window.Kakao.isInitialized()) {
+      window.Kakao.init(import.meta.env.VITE_KAKAO_JAVASCRIPT_KEY);
+    }
+  }, []);
+
   const toggleShareMenu = () => {
     setIsOpen((prev) => !prev);
   };

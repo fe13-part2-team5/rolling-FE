@@ -2,13 +2,12 @@ import styled from "styled-components";
 
 export const HeaderBox = styled.div`
   position: sticky;
-  top: 65px;
+  top: 66px;
   z-index: 10;
 
   width: 100%;
   height: 68px;
 
-  border-top: 1px solid ${({ theme }) => theme.colors.gray[300]};
   background-color: ${({ theme }) => theme.colors.white};
 `;
 

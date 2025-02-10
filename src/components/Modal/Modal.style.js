@@ -80,11 +80,30 @@ export const Content = styled.div`
   width: 100%;
   height: 256px;
   margin-top: 16px;
-  font-family: ${({ $font }) => $font};
-  ${({ theme }) => {
-    const { fontFamily, ...rest } = theme.fonts["18r"];
-    return { ...rest };
-  }}
   color: ${({ theme }) => theme.colors.gray[500]};
   overflow-y: scroll;
+
+  > h1 {
+    font-family: ${({ $font }) => $font};
+    ${({ theme }) => {
+      const { fontFamily, ...rest } = theme.fonts["22b"];
+      return { ...rest };
+    }}
+  }
+
+  > h2 {
+    font-family: ${({ $font }) => $font};
+    ${({ theme }) => {
+      const { fontFamily, ...rest } = theme.fonts["20b"];
+      return { ...rest };
+    }}
+  }
+
+  > * {
+    font-family: ${({ $font }) => $font};
+    ${({ theme }) => {
+      const { fontFamily, ...rest } = theme.fonts["18r"];
+      return { ...rest };
+    }}
+  }
 `;

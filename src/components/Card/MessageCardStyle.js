@@ -69,9 +69,54 @@ export const MessageContainer = styled.div`
 `;
 
 export const MessageFont = styled.p`
-  ${(props) => props.theme.fonts["18r"]}
-  color: #4A4A4A;
+  color: ${({ theme }) => theme.colors.gray[600]};
   letter-spacing: -1%;
+
+  p {
+    font-family: ${({ $font }) => $font};
+    ${({ theme }) => {
+      const { fontFamily, ...rest } = theme.fonts["18r"];
+      return { ...rest };
+    }}
+  }
+
+  h1 {
+    font-family: ${({ $font }) => $font};
+    ${({ theme }) => {
+      const { fontFamily, ...rest } = theme.fonts["22b"];
+      return { ...rest };
+    }}
+  }
+
+  h2 {
+    font-family: ${({ $font }) => $font};
+    ${({ theme }) => {
+      const { fontFamily, ...rest } = theme.fonts["20b"];
+      return { ...rest };
+    }}
+  }
+
+  ol {
+    list-style-type: decimal;
+    padding-left: 36px;
+  }
+
+  ul {
+    list-style-type: disc;
+    padding-left: 36px;
+  }
+
+  .ql-align-center {
+    text-align: center;
+  }
+
+  .ql-align-right {
+    text-align: right;
+  }
+
+  .ql-align-justify {
+    text-align: justify;
+  }
 `;
 
 export const MessageDateFont = styled.p`

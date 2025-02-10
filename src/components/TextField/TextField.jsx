@@ -3,14 +3,16 @@ import * as T from "./TextField.style";
 import { ArrowDownIcon } from "../Icons";
 import { useTheme } from "styled-components";
 
-function Dropdown({ width = "100%", optionData = [] }) {
+function Dropdown({ width = "100%", optionData = [], onSelect }) {
   const theme = useTheme();
   const selectRef = useRef(null);
   const [isShowOptions, setIsShowOptions] = useState(false);
   const [currentValue, setCurrentValue] = useState(optionData[0]?.value ?? ""); // label에 data 첫번째 값 value 표시 (빈 배열인 경우 빈 문자열 반환)
 
   const handleChangeSelectValue = (e) => {
-    setCurrentValue(e.target.getAttribute("value"));
+    const selectedValue = e.target.getAttribute("value");
+    setCurrentValue(selectedValue);
+    onSelect(selectedValue); // 부모 컴포넌트로 선택된 값을 전달
   };
 
   useEffect(() => {

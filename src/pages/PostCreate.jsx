@@ -4,27 +4,81 @@ import PrimaryButton from "../components/Buttons/PrimaryButton";
 import ToggleButton from "../components/Buttons/ToggleButton";
 import { InputField } from "../components/TextField/TextField";
 import * as P from "./PostAndMessage.style";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function PostCreate() {
+  const [images, setImages] = useState([]);
   const [isToggled, setIsToggled] = useState(false);
   const [name, setName] = useState("");
+  const [selectedColor, setSelectedColor] = useState("beige");
+  const [selectedImageURL, setSelectedImageURL] = useState(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const preloadImages = (imageUrls) => {
+      imageUrls.forEach((url) => {
+        const img = new Image();
+        img.src = url;
+      });
+    };
+
+    const getBackgroundImage = async () => {
+      try {
+        const response = await axios.get(
+          "https://rolling-api.vercel.app/background-images/"
+        );
+        const imageUrls = response.data.imageUrls;
+        setImages(imageUrls);
+        preloadImages(imageUrls);
+
+        if (!selectedImageURL) {
+          setSelectedImageURL(imageUrls[0]);
+        }
+      } catch (error) {
+        console.error("이미지 로드 실패:", error);
+      }
+    };
+
+    getBackgroundImage();
+  }, [selectedImageURL]);
 
   const isButtonDisabled = !name.trim();
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!isButtonDisabled) {
-      const id = Math.random().toString(36).substr(2, 9);
-      navigate(`/post/${id}`);
+      const newPostData = {
+        name: name,
+        backgroundColor: selectedColor,
+        backgroundImageURL: isToggled ? selectedImageURL : null,
+      };
+
+      try {
+        const response = await axios.post(
+          "https://rolling-api.vercel.app/13-5/recipients/",
+          newPostData
+        );
+        const postId = response.data.id;
+        navigate(`/post/${postId}`);
+      } catch (error) {
+        console.error("POST 요청 실패:", error);
+      }
     }
   };
 
   const handleToggle = () => {
-    setIsToggled(!isToggled);
+    setIsToggled((prev) => !prev);
   };
 
+  const handleBackgroundSelect = (selected) => {
+    if (isToggled) {
+      setSelectedImageURL(selected);
+    } else {
+      setSelectedColor(selected);
+      setSelectedImageURL(null);
+    }
+  };
   return (
     <P.Wrapper>
       <HeaderLogoOnly />
@@ -54,7 +108,11 @@ function PostCreate() {
           </P.StyledToggleButton>
 
           {/* Colorchip 컴포넌트 수정 - 이미지 */}
-          <Colorchip isImage={isToggled} />
+          <Colorchip
+            isImage={isToggled}
+            images={images}
+            onSelect={handleBackgroundSelect}
+          />
         </P.Section>
         <PrimaryButton
           width="100%"

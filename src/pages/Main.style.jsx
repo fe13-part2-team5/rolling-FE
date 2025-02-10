@@ -126,14 +126,14 @@ export const Content = styled.div`
     &.img-01 {
         width: 640px;
         height: 172px;
-        background-image: url('/src/assets/mainImg01.png');
+        background-image: url('/assets/mainImg01.png');
         background-size: cover;
     }
 
     &.img-02 {
         width: 470px;
         height: 204px;
-        background-image: url('/src/assets/mainImg02.png');
+        background-image: url('/assets/mainImg02.png');
         background-size: cover;
     }
 

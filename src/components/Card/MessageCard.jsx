@@ -11,6 +11,7 @@ import {
 } from "./MessageCardStyle";
 import DeleteButton from "../Buttons/DeleteButton";
 import { RelBadge } from "../Badge/Badge";
+import { formatDate } from "../../utils/dateUtils";
 
 const rel = {
   지인: "known",
@@ -52,7 +53,7 @@ function MessageCard({
       <MessageContainer>
         <MessageFont>{content}</MessageFont>
       </MessageContainer>
-      <MessageDateFont>{createdAt}</MessageDateFont>
+      <MessageDateFont>{formatDate(createdAt)}</MessageDateFont>
     </MessageCardContainer>
   );
 }

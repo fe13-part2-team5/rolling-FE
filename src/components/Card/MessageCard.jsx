@@ -12,6 +12,13 @@ import {
 import DeleteButton from "../Buttons/DeleteButton";
 import { RelBadge } from "../Badge/Badge";
 
+const rel = {
+  지인: "known",
+  동료: "colleague",
+  가족: "family",
+  친구: "friend",
+};
+
 function MessageCard({
   recipientId,
   id,
@@ -25,6 +32,7 @@ function MessageCard({
   onDelete,
   onClick,
 }) {
+  console.log(relationship);
   return (
     <MessageCardContainer onClick={onClick}>
       <SenderContainer>
@@ -33,7 +41,7 @@ function MessageCard({
           <SenderFont>
             From. <SenderBoldText>{sender}</SenderBoldText>
           </SenderFont>
-          <RelBadge>{relationship}</RelBadge>
+          <RelBadge value={rel[relationship]} />
         </div>
         <DeleteContainer>
           {showDeleteButton && (

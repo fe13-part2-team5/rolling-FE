@@ -25,8 +25,8 @@ function MessageWrite() {
   const optionDataFonts = [
     { key: 1, value: "Noto Sans" },
     { key: 2, value: "Pretendard" },
-    { key: 3, value: "Roboto" },
-    { key: 4, value: "Lato" },
+    { key: 3, value: "나눔명조" },
+    { key: 4, value: "나눔손글씨 손편지체" },
   ];
 
   // const profiles = Array(10).fill(null);

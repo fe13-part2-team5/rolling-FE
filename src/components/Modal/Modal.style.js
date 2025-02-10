@@ -52,6 +52,7 @@ export const TitleWrapper = styled.div`
   justify-content: center;
   align-items: start;
   gap: 6px;
+  max-width: 365px;
 `;
 
 export const Title = styled.div`

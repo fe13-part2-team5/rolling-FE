@@ -1,7 +1,8 @@
 import * as M from "./Modal.style";
+import PrimaryButton from "../Buttons/PrimaryButton";
+import parse from "html-react-parser";
 import { formatDate } from "../../utils/dateUtils";
 import { RelBadge } from "../Badge/Badge";
-import PrimaryButton from "../Buttons/PrimaryButton";
 
 const rel = {
   지인: "known",
@@ -37,7 +38,7 @@ function Modal({ message, handleClose }) {
           </M.ProfileWrapper>
           <M.Date>{formatDate(createdAt)}</M.Date>
         </M.Header>
-        <M.Content $font={font}>{content}</M.Content>
+        <M.Content $font={font}>{parse(content)}</M.Content>
         <PrimaryButton width={"120px"} height={"40px"} onClick={handleClose}>
           확인
         </PrimaryButton>

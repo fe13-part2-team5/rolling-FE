@@ -19,6 +19,7 @@ export const ColorChipItem = styled.div`
     isImage ? `url(${item})` : "none"};
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   cursor: pointer;
 
   &:hover {

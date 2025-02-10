@@ -9,11 +9,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function PostCreate() {
-  // const [isToggled, setIsToggled] = useState(false);
-  // const [name, setName] = useState("");
-  // const [selectedBackground, setSelectedBackground] = useState("beige");
-  // const navigate = useNavigate();
-
   const [isToggled, setIsToggled] = useState(false);
   const [name, setName] = useState("");
   const [selectedColor, setSelectedColor] = useState("beige");
@@ -46,10 +41,6 @@ function PostCreate() {
   const handleToggle = () => {
     setIsToggled((prev) => !prev);
   };
-
-  // const handleBackgroundSelect = (selected) => {
-  //   setSelectedBackground(selected); // Colorchip에서 선택한 값 업데이트
-  // };
 
   const handleBackgroundSelect = (selected) => {
     if (isToggled) {

@@ -71,17 +71,13 @@ function MessageWrite() {
         content: content,
         font: selectedFont,
       };
-
-      console.log("Id:", id);
-
       try {
-        const response = await axios.post(
+        await axios.post(
           `https://rolling-api.vercel.app/13-5/recipients/${id}/messages/`,
           newPostData
         );
 
-        const postId = response.data.id;
-        navigate(`/post/${postId}`);
+        navigate(`/post/${id}`);
       } catch (error) {
         console.error("POST 요청 실패:", error);
       }

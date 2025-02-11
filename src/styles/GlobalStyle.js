@@ -51,6 +51,35 @@ const GlobalStyle = createGlobalStyle`
   #root, #__next {
     isolation: isolate;
   }
+
+  /* 10. User Custom Fonts */
+  // Noto Sans
+  @font-face {
+    font-family: 'Noto Sans KR';
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url('https://cdn.jsdelivr.net/gh/fonts-archive/NotoSansKR/NotoSansKR-Regular.woff2') format('woff2'),
+}
+
+
+  // 나눔명조
+  @font-face {
+    font-family: 'Nanum Myeongjo';
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url('https://cdn.jsdelivr.net/gh/fonts-archive/NanumMyeongjo/NanumMyeongjo.woff2') format('woff2'),
+}
+  
+  // 나눔손글씨 손편지체
+  @font-face {
+    font-family: 'NanumSonPyeonJiCe';
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+    src: url('https://cdn.jsdelivr.net/gh/fonts-archive/NanumSonPyeonJiCe/NanumSonPyeonJiCe.woff2') format('woff2'),
+}
 `;
 
 export default GlobalStyle;

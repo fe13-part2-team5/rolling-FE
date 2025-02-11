@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
 import * as C from "./Colorchip.style";
+import axios from "axios";
 import { CompletedIcon } from "../Icons";
 import { useTheme } from "styled-components";
-import axios from "axios";
+import { useState, useEffect } from "react";
 
 function Colorchip({ isImage, onSelect }) {
   const colors = ["beige", "purple", "blue", "green"];
@@ -32,7 +32,6 @@ function Colorchip({ isImage, onSelect }) {
         console.error("이미지 로드 실패:", error);
       }
     };
-
     fetchImages();
   }, []);
 

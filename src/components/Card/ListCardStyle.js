@@ -36,13 +36,9 @@ const CardContent = styled.div`
 const CardTitle = styled.h3`
   margin-bottom: 15px;
   ${(props) => props.theme.fonts["24b"]}
-  color: ${(props) =>
-    props.$backgroundImageURL && props.$backgroundImageURL !== ""
-      ? "#ffffff"
-      : "#181818"};
+  color: ${(props) => (props.$isDark ? "#FFFFFF" : "#181818")};
   letter-spacing: -1%;
 `;
-
 
 const ProfileContainer = styled.div`
   display: flex;
@@ -51,7 +47,6 @@ const ProfileContainer = styled.div`
   height: 28px;
   margin-bottom: 15px;
 `;
-
 
 const ProfileIcon = styled.div`
   position: absolute;
@@ -65,7 +60,6 @@ const ProfileIcon = styled.div`
   border-radius: 50%;
   border: 1.5px solid white;
 `;
-
 
 const MoreMessagesCount = styled.div`
   display: flex;
@@ -88,10 +82,7 @@ const MoreMessageText = styled.p`
 
 const CardCountText = styled.p`
   ${(props) => props.theme.fonts["16r"]}
-  color: ${(props) =>
-    props.backgroundImageURL && props.backgroundImageURL !== ""
-      ? "#ffffff"
-      : "#3A3A3A"};
+  color: ${(props) => (props.$isDark ? "#FFFFFF" : "#3A3A3A")};
   letter-spacing: -1%;
 `;
 
@@ -117,7 +108,6 @@ const ReactionIcons = styled.div`
   padding-top: 17px;
   gap: 8px;
 `;
-
 
 const CardListContainer = styled.div`
   display: flex;

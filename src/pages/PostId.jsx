@@ -1,19 +1,20 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
-import HeaderService from "../components/HeaderService/HeaderService";
 import HeaderLogoOnly from "../components/Header/HeaderLogoOnly";
+import HeaderService from "../components/HeaderService/HeaderService";
 import MessageCard from "../components/Card/MessageCard";
 import Modal from "../components/Modal/Modal";
+import CreateButton from "../components/Buttons/CreateButton";
+import PrimaryButton from "../components/Buttons/PrimaryButton";
+import axios from "axios";
 import { messageData } from "./MessageData";
+import { MessageCardBox, Box, PlusBox } from "./PostId.style";
+import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import {
   MessageCardBox,
   Box,
   PlusBox,
   PrimaryButtonWrapper,
 } from "./PostId.style";
-import CreateButton from "../components/Buttons/CreateButton";
-import PrimaryButton from "../components/Buttons/PrimaryButton";
 
 function PostId() {
   const [recipient, setRecipient] = useState(null);

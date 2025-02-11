@@ -1,3 +1,4 @@
+import parse from "html-react-parser";
 import {
   MessageCardContainer,
   SenderContainer,
@@ -11,6 +12,14 @@ import {
 } from "./MessageCardStyle";
 import DeleteButton from "../Buttons/DeleteButton";
 import { RelBadge } from "../Badge/Badge";
+import { formatDate } from "../../utils/dateUtils";
+
+const rel = {
+  지인: "known",
+  동료: "colleague",
+  가족: "family",
+  친구: "friend",
+};
 
 function MessageCard({
   recipientId,
@@ -25,15 +34,16 @@ function MessageCard({
   onDelete,
   onClick,
 }) {
+  console.log(relationship);
   return (
     <MessageCardContainer onClick={onClick}>
       <SenderContainer>
         <MessageProfileIcon $profileImageURL={profileImageURL} />
         <div>
-          <SenderFont>
+          <SenderFont isDeleteButtonVisible={showDeleteButton}>
             From. <SenderBoldText>{sender}</SenderBoldText>
           </SenderFont>
-          <RelBadge>{relationship}</RelBadge>
+          <RelBadge value={rel[relationship]} />
         </div>
         <DeleteContainer>
           {showDeleteButton && (
@@ -42,9 +52,9 @@ function MessageCard({
         </DeleteContainer>
       </SenderContainer>
       <MessageContainer>
-        <MessageFont>{content}</MessageFont>
+        <MessageFont $font={font}>{parse(content)}</MessageFont>
       </MessageContainer>
-      <MessageDateFont>{createdAt}</MessageDateFont>
+      <MessageDateFont>{formatDate(createdAt)}</MessageDateFont>
     </MessageCardContainer>
   );
 }

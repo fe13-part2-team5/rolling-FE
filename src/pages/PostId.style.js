@@ -10,11 +10,13 @@ export const Box = styled.div`
   min-height: 130vh;
   padding: 113px 24px;
 
-  background-color: ${(props) =>
-    !props.bgImage ? props.bgColor || "white" : "transparent"};
+  background-color: ${({ theme, bgColor, bgImage }) =>
+    !bgImage ? theme.colors?.[bgColor]?.[200] || "white" : "transparent"};
 
-  background-image: ${(props) =>
-    props.bgImage ? `url(${props.bgImage})` : "none"};
+  background-image: ${({ bgImage }) => (bgImage ? `url(${bgImage})` : "none")};
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
   background-size: cover;
 `;
 

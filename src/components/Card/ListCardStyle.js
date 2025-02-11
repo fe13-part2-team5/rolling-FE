@@ -38,6 +38,9 @@ const CardTitle = styled.h3`
   ${(props) => props.theme.fonts["24b"]}
   color: ${(props) => (props.$isDark ? "#FFFFFF" : "#181818")};
   letter-spacing: -1%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const ProfileContainer = styled.div`

@@ -4,7 +4,7 @@ import * as G from "./GlobalStyle";
 import { useContext } from "react";
 import { ToastContext } from "../../context/ToastContext";
 
-function ShareButton() {
+function ShareButton({ recipient }) {
   const { addToast } = useContext(ToastContext);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -37,9 +37,11 @@ function ShareButton() {
     window.Kakao.Share.sendDefault({
       objectType: "feed",
       content: {
-        title: "이 페이지를 공유합니다!",
-        description: "카카오톡 공유 테스트",
-        imageUrl: "",
+        title: `${recipient.name}님의 롤링페이퍼 🎉`,
+        description: `${recipient.messageCount}명이 작성했어요!`,
+        imageUrl:
+          recipient.backgroundImageURL ||
+          "https://picsum.photos/id/683/3840/2160",
         link: {
           mobileWebUrl: window.location.href,
           webUrl: window.location.href,
@@ -47,7 +49,7 @@ function ShareButton() {
       },
       buttons: [
         {
-          title: "페이지 보기",
+          title: "구경하러 가기",
           link: {
             mobileWebUrl: window.location.href,
             webUrl: window.location.href,
@@ -56,7 +58,7 @@ function ShareButton() {
       ],
     });
 
-    toggleShareMenu(); // 공유 후 메뉴 닫기
+    toggleShareMenu();
   };
 
   return (

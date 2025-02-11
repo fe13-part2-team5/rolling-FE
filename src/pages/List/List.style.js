@@ -52,7 +52,7 @@ const PostButtonWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 60px;
+  margin: 60px 0 80px;
 `;
 
 const ArrowButtonWrapper = styled.div`

@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
 
   &.section-wrap {
     ${({ theme }) => theme.flexLayout("column")}
+    padding-bottom: 150px;
     width: 100%;
     max-width: 720px;
   }

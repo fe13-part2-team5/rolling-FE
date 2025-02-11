@@ -38,6 +38,11 @@ export const Wrapper = styled.div`
 
     &.img-box, &.buttonWrapper {
         ${({ theme }) => theme.flexLayout};
+        
+    }
+
+    &.buttonWrapper {
+        padding-bottom: 80px;
     }
 
     &.img-box {

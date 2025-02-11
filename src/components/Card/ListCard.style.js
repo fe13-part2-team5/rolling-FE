@@ -25,6 +25,11 @@ const CardContainer = styled.div`
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 16px;
   box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.14);
+  transition: all 0.3s ease-out;
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0px 5px 15px 5px rgba(0, 0, 0, 0.17);
+  }
 `;
 
 const CardContent = styled.div`
@@ -116,7 +121,6 @@ const CardListContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  overflow-x: auto;
   max-width: 1200px;
   margin: 0 auto;
   gap: 20px;

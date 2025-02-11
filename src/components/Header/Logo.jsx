@@ -1,4 +1,4 @@
-import * as L from "./Logo.style";
+import * as L from "./Header.style";
 import { LogoIcon } from "../Icons";
 
 function Logo() {

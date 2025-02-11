@@ -1,4 +1,4 @@
-import * as H from "./Header.style";
+import * as H from "./HeaderLogoOnly.style";
 import Logo from "./Logo";
 
 function HeaderLogoOnly() {

@@ -75,14 +75,55 @@ const fontMap = {
   "나눔명조": "'Nanum Myeongjo', serif",
   "나눔손글씨 손편지체": "'NanumSonPyeonJiCe', sans-serif",
 };
-export const MessageFont = styled.p`
+export const MessageFont = styled.div`
   color: ${({ theme }) => theme.colors.gray[600]};
   letter-spacing: -1%;
-  font-family: ${({ $font }) => fontMap[$font] || "Noto Sans, sans-serif"};
-  ${({ theme }) => {
-    const { fontFamily, ...rest } = theme.fonts["18r"];
-    return { ...rest };
-  }}
+
+  p {
+    font-family: ${({ $font }) => fontMap[$font] || "Noto Sans, sans-serif"};
+    ${({ theme }) => {
+      const { fontFamily, ...rest } = theme.fonts["18r"];
+      return { ...rest };
+    }}
+  }
+
+  h1 {
+    font-family: ${({ $font }) => fontMap[$font] || "Noto Sans, sans-serif"};
+    ${({ theme }) => {
+      const { fontFamily, ...rest } = theme.fonts["22b"];
+      return { ...rest };
+    }}
+  }
+
+  h2 {
+    font-family: ${({ $font }) => fontMap[$font] || "Noto Sans, sans-serif"};
+    ${({ theme }) => {
+      const { fontFamily, ...rest } = theme.fonts["20b"];
+      return { ...rest };
+    }}
+  }
+
+  ol {
+    list-style-type: decimal;
+    padding-left: 36px;
+  }
+
+  ul {
+    list-style-type: disc;
+    padding-left: 36px;
+  }
+
+  .ql-align-center {
+    text-align: center;
+  }
+
+  .ql-align-right {
+    text-align: right;
+  }
+
+  .ql-align-justify {
+    text-align: justify;
+  }
 `;
 
 export const MessageDateFont = styled.p`

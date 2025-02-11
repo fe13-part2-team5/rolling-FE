@@ -46,7 +46,7 @@ export const SenderFont = styled.h3`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 220px;
+  max-width: ${(props) => (props.isDeleteButtonVisible ? "220px" : "268px")};
 `;
 
 export const SenderBoldText = styled.span`

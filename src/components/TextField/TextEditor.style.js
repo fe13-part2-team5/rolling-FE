@@ -11,14 +11,14 @@ const fontMap = {
 
 const StyledQuill = styled(ReactQuill)`
   .ql-toolbar {
-    width: 720px;
+    width: 100%;
     height: 40px;
     border-radius: 8px 8px 0 0;
     border: 1px solid ${({ theme }) => theme.colors.gray[300]};
   }
 
   .ql-container {
-    width: 720px;
+    width: 100%;
     height: 220px;
     border-radius: 0 0 8px 8px;
     border: 1px solid ${({ theme }) => theme.colors.gray[300]};

@@ -8,6 +8,9 @@ export const Wrapper = styled.div`
     padding-bottom: 150px;
     width: 100%;
     max-width: 720px;
+    @media (max-width: 768px) {
+      padding: 0 24px;
+    }
   }
 
   &.txt-box {
@@ -26,8 +29,13 @@ export const Wrapper = styled.div`
   }
 
   &.profile-list-wrap {
-    ${({ theme }) => theme.flexLayout()}
+    ${({ theme }) => theme.flexLayout(undefined, "flex-start")}
+    flex-wrap: wrap;
     gap: 4px;
+  }
+  &.text-editor-wrap {
+    width: 100%;
+    max-width: 720px;
   }
 `;
 

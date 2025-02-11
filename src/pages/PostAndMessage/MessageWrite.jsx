@@ -123,13 +123,15 @@ function MessageWrite() {
             onSelect={setSelectedRelationship}
           />
         </P.Section>
-        <P.Section className="">
+        <P.Section>
           <P.SectionTitle>내용을 입력해 주세요</P.SectionTitle>
-          <TextEditor
-            content={content}
-            selectedFont={selectedFont}
-            setContent={setContent}
-          />
+          <P.Wrapper className="text-editor-wrap">
+            <TextEditor
+              content={content}
+              selectedFont={selectedFont}
+              setContent={setContent}
+            />
+          </P.Wrapper>
         </P.Section>
         <P.Section className="select-font">
           <P.SectionTitle>폰트 선택</P.SectionTitle>

@@ -6,7 +6,13 @@ export const MessageCardContainer = styled.div`
   height: 280px;
   border-radius: 16px;
   background-color: #ffffff;
+  cursor: pointer;
   box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.14);
+  transition: all 0.3s ease-out;
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0px 5px 15px 5px rgba(0, 0, 0, 0.17);
+  }
 `;
 
 export const SenderContainer = styled.div`

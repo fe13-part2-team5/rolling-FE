@@ -77,7 +77,9 @@ function MessageWrite() {
           newPostData
         );
 
-        navigate(`/post/${id}`);
+        navigate(`/post/${id}`, {
+          state: { message: newPostData }, // message 데이터와 함께 navigate
+        });
       } catch (error) {
         console.error("POST 요청 실패:", error);
       }

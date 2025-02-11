@@ -6,7 +6,6 @@ import CreateButton from "../components/Buttons/CreateButton";
 import PrimaryButton from "../components/Buttons/PrimaryButton";
 import axios from "axios";
 import { messageData } from "./MessageData";
-import { MessageCardBox, Box, PlusBox } from "./PostId.style";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {

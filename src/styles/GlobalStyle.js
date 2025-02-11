@@ -63,13 +63,13 @@ const GlobalStyle = createGlobalStyle`
   }
 
   // 나눔명조
-  @font-face {
+@font-face {
     font-family: 'Nanum Myeongjo';
-    font-weight: 400;
+    font-weight: 700;
     font-style: normal;
     font-display: swap;
-    src: url('https://cdn.jsdelivr.net/gh/fonts-archive/NanumMyeongjo/NanumMyeongjo.woff2') format('woff2'),
-  }
+    src: url('https://cdn.jsdelivr.net/gh/fonts-archive/NanumMyeongjo/NanumMyeongjoBold.woff2') format('woff2'),
+}
   
   // 나눔손글씨 손편지체
   @font-face {

@@ -24,7 +24,7 @@ function HeaderService({ recipient, reaction, updateReactions = () => {} }) {
             <H.MiniSection>
               <AddEmoji updateReactions={updateReactions} />
               <H.Line />
-              <ShareButton />
+              <ShareButton recipient={recipient} />
             </H.MiniSection>
           </H.Section>
         </H.RightSection>

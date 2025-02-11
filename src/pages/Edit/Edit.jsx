@@ -1,13 +1,7 @@
 import Header from "../../components/Header/Header";
-<<<<<<< HEAD
-import HeaderService from "../components/HeaderService/HeaderService";
-import MessageCard from "../components/Card/MessageCard";
-import PrimaryButton from "../components/Buttons/PrimaryButton";
-=======
 import HeaderService from "../../components/HeaderService/HeaderService";
 import MessageCard from "../../components/Card/MessageCard";
 import PrimaryButton from "../../components/Buttons/PrimaryButton";
->>>>>>> e896efe92cc2fe935718f5a7b299eefc51464284
 import * as E from "./Edit.style";
 import { useNavigate, useParams } from "react-router-dom";
 import { deleteRecipient } from "../api/Recipients";

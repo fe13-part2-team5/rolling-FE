@@ -43,6 +43,10 @@ export const MessageProfileIcon = styled.div`
 export const SenderFont = styled.h3`
   ${(props) => props.theme.fonts["20r"]}
   color: #000000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: ${(props) => (props.isDeleteButtonVisible ? "220px" : "268px")};
 `;
 
 export const SenderBoldText = styled.span`
@@ -78,7 +82,7 @@ const fontMap = {
 export const MessageFont = styled.div`
   color: ${({ theme }) => theme.colors.gray[600]};
   letter-spacing: -1%;
-
+  
   p {
     font-family: ${({ $font }) => fontMap[$font] || "Noto Sans, sans-serif"};
     ${({ theme }) => {

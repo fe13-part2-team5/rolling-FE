@@ -10,11 +10,13 @@ export const Box = styled.div`
   min-height: 130vh;
   padding: 113px 24px;
 
-  background-color: ${(props) =>
-    !props.bgImage ? props.bgColor || "white" : "transparent"};
+  background-color: ${({ theme, bgColor, bgImage }) =>
+    !bgImage ? theme.colors?.[bgColor]?.[200] || "white" : "transparent"};
 
-  background-image: ${(props) =>
-    props.bgImage ? `url(${props.bgImage})` : "none"};
+  background-image: ${({ bgImage }) => (bgImage ? `url(${bgImage})` : "none")};
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
   background-size: cover;
 `;
 
@@ -28,9 +30,20 @@ export const MessageCardBox = styled.div`
   margin: 0 auto;
   padding-bottom: 50px;
 
-  @media (max-width: 1248px) {
-    width: calc(100% - 48px);
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  @media (max-width: 1250px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    max-width: 800px;
+  }
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    width: 100%;
   }
 `;
 
@@ -45,4 +58,10 @@ export const PlusBox = styled(Link)`
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 16px;
   box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.14);
+`;
+
+export const PrimaryButtonWrapper = styled.div`
+  position: absolute;
+  top: 62px;
+  left: calc((99vw - 1200px) / 2);
 `;

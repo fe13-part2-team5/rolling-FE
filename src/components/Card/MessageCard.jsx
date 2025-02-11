@@ -34,7 +34,7 @@ function MessageCard({
   onDelete,
   onClick,
 }) {
-  console.log(relationship);
+
   return (
     <MessageCardContainer onClick={onClick}>
       <SenderContainer>

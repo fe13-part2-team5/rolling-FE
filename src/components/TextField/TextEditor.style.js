@@ -14,6 +14,11 @@ const StyledQuill = styled(ReactQuill)`
     height: 220px;
     border-radius: 0 0 8px 8px;
     border: 1px solid ${({ theme }) => theme.colors.gray[300]};
+    font-family: ${({ font }) => font};
+  }
+
+  * {
+    font-family: ${({ $font }) => $font || "Noto Sans"};
   }
 `;
 

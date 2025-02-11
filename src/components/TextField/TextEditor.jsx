@@ -1,6 +1,6 @@
 import StyledQuill from "./TextEditor.style";
 
-function TextEditor({ content, setContent }) {
+function TextEditor({ content, selectedFont, setContent }) {
   return (
     <StyledQuill
       value={content}
@@ -15,6 +15,7 @@ function TextEditor({ content, setContent }) {
         ],
       }}
       placeholder={"내용을 작성해주세요."}
+      $font={selectedFont}
     />
   );
 }

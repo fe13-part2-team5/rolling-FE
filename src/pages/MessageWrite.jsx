@@ -125,7 +125,11 @@ function MessageWrite() {
         </P.Section>
         <P.Section className="">
           <P.SectionTitle>내용을 입력해 주세요</P.SectionTitle>
-          <TextEditor content={content} setContent={setContent} />
+          <TextEditor
+            content={content}
+            selectedFont={selectedFont}
+            setContent={setContent}
+          />
         </P.Section>
         <P.Section className="select-font">
           <P.SectionTitle>폰트 선택</P.SectionTitle>

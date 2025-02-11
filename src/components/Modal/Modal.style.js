@@ -79,11 +79,10 @@ export const Date = styled.div`
 // User Cumstom Fonts
 const fontMap = {
   "Noto Sans": "'Noto Sans', sans-serif",
-  Pretendard: "'Pretendard', sans-serif",
-  나눔명조: "'Nanum Myeongjo', serif",
+  "Pretendard": "'Pretendard', sans-serif",
+  "나눔명조": "'Nanum Myeongjo', serif",
   "나눔손글씨 손편지체": "'NanumSonPyeonJiCe', sans-serif",
 };
-
 export const Content = styled.div`
   width: 100%;
   height: 256px;

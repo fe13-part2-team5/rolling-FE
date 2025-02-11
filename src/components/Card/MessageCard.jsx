@@ -42,7 +42,7 @@ function MessageCard({
         </DeleteContainer>
       </SenderContainer>
       <MessageContainer>
-        <MessageFont>{content}</MessageFont>
+        <MessageFont $font={font}>{content}</MessageFont>
       </MessageContainer>
       <MessageDateFont>{createdAt}</MessageDateFont>
     </MessageCardContainer>

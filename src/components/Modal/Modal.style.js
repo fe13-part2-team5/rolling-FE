@@ -84,7 +84,7 @@ export const Content = styled.div`
   color: ${({ theme }) => theme.colors.gray[500]};
   overflow-y: scroll;
 
-  p {
+  * {
     font-family: ${({ $font }) => $font};
     ${({ theme }) => {
       const { fontFamily, ...rest } = theme.fonts["18r"];

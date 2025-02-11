@@ -76,7 +76,7 @@ export const MessageFont = styled.p`
   color: ${({ theme }) => theme.colors.gray[600]};
   letter-spacing: -1%;
 
-  p {
+  * {
     font-family: ${({ $font }) => $font};
     ${({ theme }) => {
       const { fontFamily, ...rest } = theme.fonts["18r"];

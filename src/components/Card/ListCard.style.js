@@ -122,7 +122,6 @@ const CardListContainer = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   max-width: 1200px;
-  margin: 0 auto;
   gap: 20px;
   transition: transform 0.3s ease-in-out;
   will-change: transform;

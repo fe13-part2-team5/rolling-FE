@@ -57,13 +57,13 @@ src
 
 ## 👥 팀원과 역할
 
-| 이름 | GitHub | 역할 |
-|------|----------|------|
-| &nbsp;강석준&nbsp; | [@KSJ27](https://github.com/KSJ27) | 전역 스타일 및 테마, Icon, Modal, Toast, Text Editor 컴포넌트, 롤링페이퍼 수정 페이지 |
-| 박수연 | [@heresue](https://github.com/heresue) | Badge, Text Field, Profile, Colorchip 컴포넌트, 롤링페이퍼 생성 페이지, 메시지 생성 페이지 |
-| 이현호 | [@MySoupRice](https://github.com/MySoupRice) | Header, Header Service 컴포넌트, 메시지 목록 페이지 |
-| 조민지 | [@MINJI121](https://github.com/MINJI121) | Card, Card List 컴포넌트, 롤링페이퍼 목록 페이지 |
-| 황준호 | [@mecrojun](https://github.com/mecrojun) | Button 컴포넌트, 메인 페이지 |
+|   이름   | GitHub | 역할 |
+|----------|----------|------|
+|   강석준   | [@KSJ27](https://github.com/KSJ27) | 전역 스타일 및 테마, Icon, Modal, Toast, Text Editor 컴포넌트, 롤링페이퍼 수정 페이지 |
+|   박수연   | [@heresue](https://github.com/heresue) | Badge, Text Field, Profile, Colorchip 컴포넌트, 롤링페이퍼 생성 페이지, 메시지 생성 페이지 |
+|   이현호   | [@MySoupRice](https://github.com/MySoupRice) | Header, Header Service 컴포넌트, 메시지 목록 페이지 |
+|   조민지   | [@MINJI121](https://github.com/MINJI121) | Card, Card List 컴포넌트, 롤링페이퍼 목록 페이지 |
+|   황준호   | [@mecrojun](https://github.com/mecrojun) | Button 컴포넌트, 메인 페이지 |
 
 ## ✍️ 회고
 

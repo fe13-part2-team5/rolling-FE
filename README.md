@@ -57,7 +57,7 @@ src
 
 ## 👥 팀원과 역할
 
-| 이름&nbsp;&nbsp;&nbsp;&nbsp; | GitHub | 역할 |
+| 이름&nbsp;&nbsp;&nbsp; | GitHub | 역할 |
 |------|----------|------|
 | 강석준 | [@KSJ27](https://github.com/KSJ27) | 전역 스타일 및 테마, Icon, Modal, Toast, Text Editor 컴포넌트, 롤링페이퍼 수정 페이지 |
 | 박수연 | [@heresue](https://github.com/heresue) | Badge, Text Field, Profile, Colorchip 컴포넌트, 롤링페이퍼 생성 페이지, 메시지 생성 페이지 |
